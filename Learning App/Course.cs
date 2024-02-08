@@ -12,6 +12,7 @@ namespace Learning_App
     /// </summary>
     public interface ICourse
     {
+        public Program Program { get; set; }
         /// <summary>
         /// Номер курса (для быстрого ввода пользователем)
         /// </summary>
@@ -25,17 +26,15 @@ namespace Learning_App
         /// </summary>
         public List<ISprint> Sprints { get; }
 
-        public void Selector(bool clearUI = true)
+        public void Selector(ISprint? sprint = null)
         {
-            if(clearUI)
-                Console.Clear();
-            ShowCourseHeader();
-            ISprint? selectedSprint = null;
-            while (selectedSprint is null)
+            ISprint? selectedSprint = sprint;
+            selectedSprint = SelectSprint();
+            if (selectedSprint is null)
             {
-                selectedSprint = SelectSprint();
+                Selector();
             };
-            selectedSprint.SelectChapter();
+            selectedSprint!.Selector();
         }
 
         /// <summary>
@@ -50,18 +49,22 @@ namespace Learning_App
             {
                 Console.WriteLine($"   {Sprints[i].Number}:Спринт {Sprints[i].Number}");
             }
+            Console.WriteLine($"-------------");
             Console.WriteLine($"   back:Назад");
             Console.WriteLine($"   exit:Выход из приложения");
+            Console.WriteLine($"-------------");
             int? userInput = TaskHelper.GetCount("Введите номер спринта...");
             if (userInput != null)
             {
+                if (userInput == int.MaxValue)
+                    Program.Selector();
                 return Sprints.Where(sprint => sprint.Number == userInput.Value).FirstOrDefault();
             }
                 
             else return null;
         }
 
-        void ShowCourseHeader()
+        private void ShowCourseHeader()
         {
             Console.WriteLine("***************************************************************************************");
             Console.WriteLine($"Курс {Name}");

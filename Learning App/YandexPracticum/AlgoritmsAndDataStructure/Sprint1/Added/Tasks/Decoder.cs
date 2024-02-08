@@ -18,7 +18,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Added
         }
         public IChapter Chapter { get; set; }
 
-        public string TaskNumber => "2";
+        public string Number => "2";
 
         public string Name => "Дополнительная задача спринта 1 блока 2 из разбора";
 
@@ -28,9 +28,10 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Added
 
         public void DoTask()
         {
-            TaskHelper.ShowTaskHeader(TaskNumber, Name);
+            TaskHelper.ShowTaskHeader(Number, Name);
             Target = GetUserInput();
             Console.WriteLine($"Результат декодирования: {DecodeV1(Target)}");
+            BackToMenu();
         }
         private string GetUserInput()
         {
@@ -73,6 +74,16 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Added
                     digits.Add(c);
             }
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Метод возврата в меню
+        /// </summary>
+        public void BackToMenu()
+        {
+            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
+            Console.ReadKey();
+            Chapter.Selector();
         }
     }
 }

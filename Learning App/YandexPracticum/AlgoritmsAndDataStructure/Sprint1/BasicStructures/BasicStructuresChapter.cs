@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicStructures.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +15,14 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public ISprint Sprint { get; set; }
 
         public string Name => "Базовые структуры данных";
-        public List<ITask> Tasks => new List<ITask>() { 
+        public int Number => 2;
+        public List<ITask> Tasks => new List<ITask>() {
+            new Circles(this),
             new MatrixTransponderTask(this),
             new SubstringTask(this),
             new Neighbours(this),
+            new TaskList(this),
+            new NoFavoritActivity(this),
         };
     }
 }

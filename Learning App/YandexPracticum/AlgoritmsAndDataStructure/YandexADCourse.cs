@@ -12,6 +12,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure
     /// </summary>
     public class YandexADCourse : ICourse
     {
+        public YandexADCourse(Program program) { Program = program; }
+        public Program Program { get; set; }
         public int Number { get => 1; }
         public string Name
         {

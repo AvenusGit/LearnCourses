@@ -15,7 +15,7 @@ namespace Learning_App
         /// <summary>
         /// Буква номера задачи
         /// </summary>
-        string TaskNumber { get; }
+        string Number { get; }
         /// <summary>
         /// Название задачи
         /// </summary>
@@ -31,8 +31,6 @@ namespace Learning_App
         /// <summary>
         /// Метод возвращения в меню выше уровнем
         /// </summary>
-        public void BackToMenu() {
-            Chapter.SelectTask();
-        }
+        public void BackToMenu();
     }
 }

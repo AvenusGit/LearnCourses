@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicStructures;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.PortableExecutable;
@@ -147,6 +148,27 @@ namespace Learning_App
                 }
                 Console.WriteLine(builder);
             }
+        }
+        /// <summary>
+        /// Просит пользователя ввести строки и превращаяет их в ноду, необходимую для некоторых заданий
+        /// </summary>
+        /// <returns></returns>
+        public static Node<string>? GetNodeHeader()
+        {
+            Console.WriteLine("Введите слова для значений нод через пробел...");
+            string? input = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(input))
+                return null;
+            string[] values = input.Split(' ');
+            Node<string>? previousNode = null;
+            for (int i = values.Length -1 ; i > -1; i--)
+            {
+                Node<string> node = new Node<string>(values[i],previousNode);
+                previousNode = node;
+                if(i == 0)
+                    return node;
+            }
+            return null; // это не должно никогда случиться
         }
     }
 }

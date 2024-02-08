@@ -17,7 +17,7 @@ namespace Learning_App.One
         }
         public IChapter Chapter { get; set; }
 
-        public string TaskNumber => "1";
+        public string Number => "1";
 
         public string Name => "Дополнительная задача спринта 1 блока 2 из разбора";
 
@@ -29,10 +29,11 @@ namespace Learning_App.One
 
         public void DoTask()
         {
-            TaskHelper.ShowTaskHeader(TaskNumber,Name, Description);
+            TaskHelper.ShowTaskHeader(Number,Name, Description);
             TargetArray = GetValues();
             PrintArray(TargetArray, "Выбранный массив:");
             RevertArrayIntPair(TargetArray);
+            BackToMenu();
         }
         /// <summary>
         /// Запрос у пользователя массива чисел
@@ -103,6 +104,16 @@ namespace Learning_App.One
                 targetArray[i+1] = temporary;
             }
             PrintArray(targetArray, "Инвертированный массив:");
+        }
+
+        /// <summary>
+        /// Метод возврата в меню
+        /// </summary>
+        public void BackToMenu()
+        {
+            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
+            Console.ReadKey();
+            Chapter.Selector();
         }
     }
 }

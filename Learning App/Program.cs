@@ -3,38 +3,41 @@ using Learning_App.One;
 using Learning_App.YandexPracticum.AlgoritmsAndDataStructure;
 using System.Runtime.CompilerServices;
 
-namespace Program
+namespace Learning_App
 {
     public class Program
     {
         static void Main(string[] args)
         {
-            Selector();
+            Program program = new Program();
+            program.Selector();
         }
-        private static void Selector()
+        public void Selector(ICourse? course = null)
         {
-            ICourse? selectedCourse = null;
+            ICourse? selectedCourse = course;
             selectedCourse = SelectCourse();
-            while (selectedCourse is null)
+            if (selectedCourse is null)
             {
-                selectedCourse = SelectCourse();
+                Selector(selectedCourse);
             };
-            selectedCourse.Selector();
+            selectedCourse!.Selector();
         }
 
-        private static ICourse? SelectCourse()
+        private ICourse? SelectCourse()
         {
             Console.Clear();
             ShowAppHeader();
             List<ICourse> courses = new List<ICourse>() {
-        new YandexADCourse()
+        new YandexADCourse(this)
     };
             Console.WriteLine("Выберите курс:");
             for (int i = 0; i < courses.Count; i++)
             {
                 Console.WriteLine($"   {courses[i].Number}:{courses[i].Name}");
             }
+            Console.WriteLine($"-------------");
             Console.WriteLine($"   exit:Выход из приложения");
+            Console.WriteLine($"-------------");
             int? userInput = TaskHelper.GetCount("Введите номер курса...");
             if (userInput != null)
                 return courses.Where(course => course.Number == userInput.Value).FirstOrDefault();

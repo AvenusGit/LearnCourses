@@ -15,6 +15,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Added
         public ISprint Sprint { get; set; }
 
         public string Name => "Разбор задач в теории";
+        public int Number => 0;
         public List<ITask> Tasks => new List<ITask>() { 
             new Decoder(this),
             new Revertor(this),

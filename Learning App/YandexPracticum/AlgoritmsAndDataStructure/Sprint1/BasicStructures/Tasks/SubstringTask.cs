@@ -17,7 +17,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         }
         public IChapter Chapter { get; set; }
 
-        public string TaskNumber => "C";
+        public string Number => "C";
 
         public string Name => "Подстроки";
 
@@ -39,9 +39,10 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
 
         public void DoTask()
         {
-            TaskHelper.ShowTaskHeader(TaskNumber, Name, Description);
+            TaskHelper.ShowTaskHeader(Number, Name, Description);
             Target = InputString();
             CalculateMaxSubstring();
+            BackToMenu();
         }
         /// <summary>
         /// Ввод целевой строки
@@ -53,7 +54,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             return Console.ReadLine() ?? "";
         }
         /// <summary>
-        /// Рассчет самой большой уникальной подстроки
+        /// Расчет самой большой уникальной подстроки
         /// </summary>
         private void CalculateMaxSubstring()
         {
@@ -77,6 +78,15 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 }
             }
             Console.WriteLine($"Целевая строка: {Target}, максимальная уникальная подстрока в ней: {MaxString}, длинной в {MaxStringLenght}");
+        }
+        /// <summary>
+        /// Метод возврата в меню
+        /// </summary>
+        public void BackToMenu()
+        {
+            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
+            Console.ReadKey();
+            Chapter.Selector();
         }
     }
 }
