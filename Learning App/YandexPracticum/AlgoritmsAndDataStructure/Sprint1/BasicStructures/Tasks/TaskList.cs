@@ -41,11 +41,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         /// <param name="head">Головная нода</param>
         private void Solution(Node<string> head)
         {
-            Console.WriteLine(head.Value);
-            if(head.NextNode is not null)
-            {
-                Solution(head.NextNode);
-            }
+            TaskHelper.PrintNode(head);
         }
 
         public void BackToMenu()

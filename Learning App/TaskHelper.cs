@@ -170,5 +170,20 @@ namespace Learning_App
             }
             return null; // это не должно никогда случиться
         }
+        /// <summary>
+        /// Выводит на экран связанный список
+        /// </summary>
+        /// <param name="head"></param>
+        public static void PrintNode(Node<string> head, string? description = null)
+        {
+            if(description is not null)
+                Console.WriteLine(description);
+
+            Console.WriteLine($"   {head.Value}");
+            if (head.NextNode is not null)
+            {
+                PrintNode(head.NextNode);
+            }
+        }
     }
 }
