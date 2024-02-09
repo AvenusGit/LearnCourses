@@ -82,7 +82,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                     }                        
                     if (i == deletedIndex + 1)
                     {
-                        selectedNode.NextNode = currentNode;
+                        selectedNode!.NextNode = currentNode;
                         TaskHelper.PrintNode(head, "Список с удаленным элементом:");
                         return;
                     }
