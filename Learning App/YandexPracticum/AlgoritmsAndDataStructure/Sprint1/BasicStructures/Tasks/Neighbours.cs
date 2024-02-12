@@ -38,7 +38,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             int targetRow = TaskHelper.GetIntUserInput("В какой строке целевой элемент? (счет идет с нуля)");
             int targetCol = TaskHelper.GetIntUserInput("В каком столбце целевой элемент? (счет идет с нуля)");
             PrintNeighbours(GetNeighbours(matrix, rowCount, colCount, targetRow, targetCol), true);
-            BackToMenu();
+            TaskHelper.BackToMenu(Chapter);
         }
 
         /// <summary>
@@ -82,16 +82,6 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 stringBuilder.Append($" {neighbour}");
             }
             Console.WriteLine(stringBuilder);
-        }
-
-        /// <summary>
-        /// Метод возврата в меню
-        /// </summary>
-        public void BackToMenu()
-        {
-            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
-            Console.ReadKey();
-            Chapter.Selector();
         }
     }
 }

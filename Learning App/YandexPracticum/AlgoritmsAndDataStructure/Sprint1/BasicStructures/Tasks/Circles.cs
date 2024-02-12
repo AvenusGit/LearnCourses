@@ -26,7 +26,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 values = GetStringArray();
             }
             PrintUnique(values);
-            BackToMenu();
+            TaskHelper.BackToMenu(Chapter);
         }
         /// <summary>
         /// Запросить у пользвателя исходный массив строк
@@ -59,13 +59,6 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             {
                 Console.WriteLine($"   {value}");
             }
-        }
-
-        public void BackToMenu()
-        {
-            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
-            Console.ReadKey();
-            Chapter.Selector();
         }
     }
 }

@@ -23,13 +23,6 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public string Description => "Написать метод который принимает голову односвязного списка," +
             " удалит элемент самодельного связанного списка по номеру N и снова вернет голову списка";
 
-        public void BackToMenu()
-        {
-            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
-            Console.ReadKey();
-            Chapter.Selector();
-        }
-
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);
@@ -44,7 +37,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 deleteIndex = TaskHelper.GetCount("Укажите индекс удаляемого элемента коллекции");
             }
             Solution(head,deleteIndex.Value);
-            BackToMenu();
+            TaskHelper.BackToMenu(Chapter);
         }
 
         private void Solution(LinkedListS<string> list, int deletedIndex)

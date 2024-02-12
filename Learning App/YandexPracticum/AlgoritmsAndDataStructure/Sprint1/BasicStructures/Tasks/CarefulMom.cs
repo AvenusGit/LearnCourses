@@ -23,13 +23,6 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
 
         public string Description => "Задача реализовать метод,который возвращает первое вхождение из связанного списка";
 
-        public void BackToMenu()
-        {
-            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
-            Console.ReadKey();
-            Chapter.Selector();
-        }
-
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);
@@ -49,7 +42,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 Console.WriteLine($"Искомая строка не найдена в списке");
             else
                 Console.WriteLine($"Искомая строка найдена под индексом {result}");
-            BackToMenu();
+            TaskHelper.BackToMenu(Chapter);
         }
     }
 }

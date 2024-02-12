@@ -42,7 +42,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             TaskHelper.ShowTaskHeader(Number, Name, Description);
             Target = InputString();
             CalculateMaxSubstring();
-            BackToMenu();
+            TaskHelper.BackToMenu(Chapter);
         }
         /// <summary>
         /// Ввод целевой строки
@@ -78,15 +78,6 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 }
             }
             Console.WriteLine($"Целевая строка: {Target}, максимальная уникальная подстрока в ней: {MaxString}, длинной в {MaxStringLenght}");
-        }
-        /// <summary>
-        /// Метод возврата в меню
-        /// </summary>
-        public void BackToMenu()
-        {
-            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
-            Console.ReadKey();
-            Chapter.Selector();
         }
     }
 }

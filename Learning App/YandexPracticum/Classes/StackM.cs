@@ -27,12 +27,12 @@ namespace Learning_App.YandexPracticum.Classes
         /// <summary>
         /// Текущие значения стека
         /// </summary>
-        (T, T)[] Values { get; set; }
+        private (T, T)[] Values { get; set; }
 
         /// <summary>
         /// Добавляет элемент в стек
         /// </summary>
-        public void Push(T item)
+        public void Push(T item, bool print = false)
         {
             if (Lenght >= Values.Length)
             {
@@ -40,6 +40,9 @@ namespace Learning_App.YandexPracticum.Classes
                 return;
             }
             Values[Lenght++] = (item, item.CompareTo(GetMax()) > 0 ? item : GetMax());
+
+            if (print) 
+                Print();
         }
         /// <summary>
         /// Команда удаляет верхний элемент из стека и возвращает его

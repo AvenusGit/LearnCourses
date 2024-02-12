@@ -30,7 +30,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             int[,] matrix = TaskHelper.InputMatrixRequest(rowCount, colCount);
             TaskHelper.ShowMatrix(matrix, "Исходная матрица...", rowCount, colCount);
             TaskHelper.ShowMatrix(TransformMatrix(matrix, rowCount, colCount), "Пребразованная матрица", rowCount, colCount);
-            BackToMenu();
+            TaskHelper.BackToMenu(Chapter);
         }
 
         /// <summary>
@@ -51,15 +51,6 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 }
             }
             return result;
-        }
-        /// <summary>
-        /// Метод возврата в меню
-        /// </summary>
-        public void BackToMenu()
-        {
-            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
-            Console.ReadKey();
-            Chapter.Selector();
         }
     }
 }

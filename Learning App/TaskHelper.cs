@@ -264,5 +264,44 @@ namespace Learning_App
             }
             return new StackM<int>(stackArray.ToArray());
         }
+
+        /// <summary>
+        /// Просит пользователя ввести числа и превращаяет их в стэк(H), необходимый для некоторых заданий
+        /// </summary>
+        /// <returns></returns>
+        public static StackH<int>? GetPositiveIntegerStackH()
+        {
+            Console.WriteLine("Введите положительные целые числа для значений стека через пробел...");
+            string? input = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(input))
+                return null;
+            string[] values = input.Split(' ');
+            int[] stackValues = new int[values.Length];
+            for (int i = 0; i < values.Length; i++)
+            {
+                int parsedInt;
+                if (Int32.TryParse(values[i], out parsedInt))
+                    if (parsedInt >= 0)
+                        stackValues[i] = parsedInt;
+                    else
+                    {
+                        Console.WriteLine("Числа должны быть положительными");
+                        return null;
+                    }
+                else
+                {
+                    Console.WriteLine("Не удалось определить одно из знаечний как число");
+                    return null;
+                }
+            }
+            return new StackH<int>(stackValues);
+        }
+
+        public static void BackToMenu(IChapter chapter)
+        {
+            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
+            Console.ReadKey();
+            chapter.Selector();
+        }
     }
 }

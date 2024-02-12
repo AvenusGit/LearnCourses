@@ -33,8 +33,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 head = TaskHelper.GetNodeHeader();
             }
             Console.WriteLine("Ты этого не увидишь в консоли, но тут связанный список:");
-            Solution(head);            
-            BackToMenu();
+            Solution(head);
+            TaskHelper.BackToMenu(Chapter);
         }
         /// <summary>
         /// Решение задания
@@ -45,12 +45,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             list.Print();
         }
 
-        public void BackToMenu()
-        {
-            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
-            Console.ReadKey();
-            Chapter.Selector();
-        }
+
     }
 
 }

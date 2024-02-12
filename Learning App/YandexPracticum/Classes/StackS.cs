@@ -9,7 +9,7 @@ namespace Learning_App.YandexPracticum.Classes
     /// <summary>
     /// Собственная реализация стека
     /// </summary>
-    public class StackS<T> where T :IComparable<T>
+    public class StackS<T> : IStack<T> where T :IComparable<T>
     {
         public StackS(int stackSize) 
         {
@@ -29,19 +29,21 @@ namespace Learning_App.YandexPracticum.Classes
         /// <summary>
         /// Текущие значения стека
         /// </summary>
-        T[] Values { get; set; }
+        private T[] Values { get; set; }
 
         /// <summary>
         /// Добавляет элемент в стек
         /// </summary>
-        public void Push(T item)
+        public void Push(T item, bool print = false)
         {
-            if(Lenght >= Values.Length)
+            if (Lenght >= Values.Length)
             {
                 Console.WriteLine("Stack is full");
                 return;
             }
             Values[++Lenght] = item;
+            if (print)
+                Print();
         }
         /// <summary>
         /// Команда удаляет верхний элемент из стека и возвращает его
@@ -68,19 +70,18 @@ namespace Learning_App.YandexPracticum.Classes
             }
             return max;
         }
-        /// <summary>
-        /// Печатает в консоли значения стека
-        /// </summary>
-        /// <param name="printHeader"></param>
-        public void Print(bool printHeader = true)
+        public void Print()
         {
-            if(printHeader)
-                Console.WriteLine("Значения стека:");
-
+            Console.WriteLine("Значения стека:");
             foreach(T item in Values)
             {
                 Console.WriteLine($"   {item.ToString()}");
             }
+        }
+
+        public int GetSize()
+        {
+            return Lenght;
         }
     }
 }

@@ -18,13 +18,6 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
 
         public string Description => "Задача получить от пользователя двухсвязный список и вернуть его наоборот";
 
-        public void BackToMenu()
-        {
-            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
-            Console.ReadKey();
-            Chapter.Selector();
-        }
-
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);
@@ -32,7 +25,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             while (list is null)
                 list = TaskHelper.GetDoubleNodeHeader();
             Solution(list);
-            BackToMenu();
+            TaskHelper.BackToMenu(Chapter);
         }
 
         private void Solution(DoubleLinkedListS<string> list)

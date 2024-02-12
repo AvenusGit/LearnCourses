@@ -22,13 +22,6 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
 
         public string Description => "Найти максимум за О(1)";
 
-        public void BackToMenu()
-        {
-            Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
-            Console.ReadKey();
-            Chapter.Selector();
-        }
-
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);
@@ -39,7 +32,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
 
             stack.Print();
             Console.WriteLine($"Максимальное значение в стеке: {stack.GetMax()}");
-            BackToMenu();
+            TaskHelper.BackToMenu(Chapter);
         }
     }
 }

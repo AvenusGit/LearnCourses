@@ -28,9 +28,5 @@ namespace Learning_App
         /// Метод начала выполнения задачи
         /// </summary>
         public void DoTask();
-        /// <summary>
-        /// Метод возвращения в меню выше уровнем
-        /// </summary>
-        public void BackToMenu();
     }
 }
