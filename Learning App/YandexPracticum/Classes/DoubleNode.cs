@@ -12,9 +12,9 @@ namespace Learning_App.YandexPracticum.Classes
     /// <typeparam name="T">Тип списка</typeparam>
     public class DoubleNode<T>
     {
-        public T? Value;
-        public DoubleNode<T>? NextNode;
-        public DoubleNode<T>? PreviousNode;
+        public T Value { get; set; }
+        public DoubleNode<T>? NextNode { get; set; }
+        public DoubleNode<T>? PreviousNode { get; set; }
 
         public DoubleNode(T? value, DoubleNode<T>? nextValue = null, DoubleNode<T>? previousValue = null)
         {

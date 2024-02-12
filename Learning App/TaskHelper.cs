@@ -145,7 +145,7 @@ namespace Learning_App
             }
         }
         /// <summary>
-        /// Просит пользователя ввести строки и превращаяет их в ноду, необходимую для некоторых заданий
+        /// Просит пользователя ввести строки и превращаяет их в связанный список, необходимую для некоторых заданий
         /// </summary>
         /// <returns></returns>
         public static LinkedListS<string>? GetNodeHeader()
@@ -165,9 +165,9 @@ namespace Learning_App
             }
             throw new Exception("Ошибка в алгоритме");
         }
-        
+
         /// <summary>
-        /// Метод возвращает двухсвязный список от пользователя
+        /// Просит пользователя ввести строки и превращаяет их в двухсвязный список, необходимую для некоторых заданий
         /// </summary>
         /// <returns></returns>
         public static DoubleLinkedListS<string>? GetDoubleNodeHeader()
@@ -192,6 +192,31 @@ namespace Learning_App
                     return new DoubleLinkedListS<string>(header!);
             }
             throw new Exception("Ошибка в алгоритме");
+        }
+        /// <summary>
+        /// Просит пользователя ввести числа и превращаяет их в стэк, необходимый для некоторых заданий
+        /// </summary>
+        /// <returns></returns>
+        public static StackS<int>? GetIntegerStack()
+        {
+            Console.WriteLine("Введите числа для значений стека через пробел...");
+            string? input = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(input))
+                return null;
+            string[] values = input.Split(' ');
+            List<int> stackValues = new List<int>();
+            foreach (string str in values)
+            {
+                int parsedInt;
+                if(Int32.TryParse(str, out parsedInt))
+                    stackValues.Add(parsedInt);
+                else
+                {
+                    Console.WriteLine("Не удалось определить одно из знаечний как число");
+                    return null;
+                }
+            }
+            return new StackS<int>(stackValues.ToArray());
         }
     }
 }

@@ -30,9 +30,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             TaskHelper.ShowTaskHeader(Number, Name, Description);
             DoubleLinkedListS<string>? list = null;
             while (list is null)
-            {
                 list = TaskHelper.GetDoubleNodeHeader();
-            }
             Solution(list);
             BackToMenu();
         }

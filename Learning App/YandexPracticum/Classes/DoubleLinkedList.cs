@@ -46,9 +46,10 @@ namespace Learning_App.YandexPracticum.Classes
             while (current is not null) 
             {
                 temp = current.PreviousNode;
-                current.PreviousNode = current.NextNode = null;
+                current.PreviousNode = current.NextNode;
                 current.NextNode = temp;
-                current = current.PreviousNode;
+                Header = current;
+                current = current.PreviousNode;                
             }
         }
     }
