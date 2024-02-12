@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Learning_App.YandexPracticum.Classes;
 
 namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicStructures.Tasks
 {
@@ -32,10 +33,10 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);
-            Node<string>? head = null;
-            while (head is null)
+            LinkedListS<string>? list = null;
+            while (list is null)
             {
-                head = TaskHelper.GetNodeHeader();
+                list = TaskHelper.GetNodeHeader();
             }
             string? request = null;
             while (request is null)
@@ -43,31 +44,12 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 Console.WriteLine("Введите искомую строку:");
                 request = Console.ReadLine(); ;
             }
-            int? result = IndexOf(head, request);
+            int? result = list.IndexOf(request);
             if (result is null)
                 Console.WriteLine($"Искомая строка не найдена в списке");
             else
                 Console.WriteLine($"Искомая строка найдена под индексом {result}");
             BackToMenu();
-        }
-
-        private int? IndexOf(Node<string> head, string value)
-        {
-            int? result = 0;
-            Node<string> currentNode = head;
-            while (currentNode.NextNode is not null)
-            {
-                if(currentNode.Value == value)
-                {
-                    return result;
-                }
-                else
-                {
-                    currentNode = currentNode.NextNode;
-                    result++;
-                }
-            }
-            return null;
         }
     }
 }

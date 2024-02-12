@@ -24,6 +24,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new TaskList(this),
             new NoFavoritActivity(this),
             new CarefulMom(this),
+            new RevertAll(this),
         };
     }
 }

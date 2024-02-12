@@ -1,10 +1,5 @@
-﻿using Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicStructures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.PortableExecutable;
+﻿using Learning_App.YandexPracticum.Classes;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Learning_App
 {
@@ -153,7 +148,7 @@ namespace Learning_App
         /// Просит пользователя ввести строки и превращаяет их в ноду, необходимую для некоторых заданий
         /// </summary>
         /// <returns></returns>
-        public static Node<string>? GetNodeHeader()
+        public static LinkedListS<string>? GetNodeHeader()
         {
             Console.WriteLine("Введите слова для значений нод через пробел...");
             string? input = Console.ReadLine();
@@ -166,24 +161,37 @@ namespace Learning_App
                 Node<string> node = new Node<string>(values[i],previousNode);
                 previousNode = node;
                 if(i == 0)
-                    return node;
+                    return new LinkedListS<string>(node);
             }
-            return null; // это не должно никогда случиться
+            throw new Exception("Ошибка в алгоритме");
         }
+        
         /// <summary>
-        /// Выводит на экран связанный список
+        /// Метод возвращает двухсвязный список от пользователя
         /// </summary>
-        /// <param name="head"></param>
-        public static void PrintNode(Node<string> head, string? description = null)
+        /// <returns></returns>
+        public static DoubleLinkedListS<string>? GetDoubleNodeHeader()
         {
-            if(description is not null)
-                Console.WriteLine(description);
-
-            Console.WriteLine($"   {head.Value}");
-            if (head.NextNode is not null)
+            Console.WriteLine("Введите слова для значений нод через пробел...");
+            string? input = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(input))
+                return null;
+            string[] values = input.Split(' ');
+            DoubleNode<string>? header = null;
+            DoubleNode<string>? nextNode = null;
+            DoubleNode<string>? previousNode = null;
+            for (int i = 0; i < values.Length; i++)
             {
-                PrintNode(head.NextNode);
+                DoubleNode<string> doubleNode = new DoubleNode<string>(values[i], nextNode, previousNode);
+                if(doubleNode.PreviousNode is not null)
+                    doubleNode.PreviousNode.NextNode = doubleNode;
+                previousNode = doubleNode;
+                if (i == 0)
+                    header = doubleNode;
+                if (i == values.Length - 1)
+                    return new DoubleLinkedListS<string>(header!);
             }
+            throw new Exception("Ошибка в алгоритме");
         }
     }
 }

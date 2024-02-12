@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Learning_App.YandexPracticum.Classes;
 
 namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicStructures.Tasks
 {
@@ -26,7 +27,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);
-            Node<string>? head = null;
+            LinkedListS<string>? head = null;
             while (head is null)
             {
                 head = TaskHelper.GetNodeHeader();
@@ -39,9 +40,9 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         /// Решение задания
         /// </summary>
         /// <param name="head">Головная нода</param>
-        private void Solution(Node<string> head)
+        private void Solution(LinkedListS<string> list)
         {
-            TaskHelper.PrintNode(head);
+            list.Print();
         }
 
         public void BackToMenu()

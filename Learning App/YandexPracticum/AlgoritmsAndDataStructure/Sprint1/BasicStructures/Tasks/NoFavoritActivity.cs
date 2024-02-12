@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Learning_App.YandexPracticum.Classes;
 
 namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicStructures.Tasks
 {
@@ -33,7 +34,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);
             int? deleteIndex = null;
-            Node<string>? head = null;
+            LinkedListS<string>? head = null;
             while (head is null)
             {
                 head = TaskHelper.GetNodeHeader();
@@ -43,51 +44,23 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 deleteIndex = TaskHelper.GetCount("Укажите индекс удаляемого элемента коллекции");
             }
             Solution(head,deleteIndex.Value);
-            //Console.WriteLine("Эта задача не требует ввода, смотри код");
             BackToMenu();
         }
 
-        private void Solution(Node<string> head, int deletedIndex)
-        {
-            if (deletedIndex == 0)
+        private void Solution(LinkedListS<string> list, int deletedIndex)
+        {            
+            try
             {
-                if (head.NextNode is not null)
-                {
-                    TaskHelper.PrintNode(head.NextNode, "Список с удаленным элементом:");
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine("Удален единственный элемент");
-                    return;
-                }
+                list.RemoveAt(deletedIndex);
+                list.Print("Список поле удаления элемента:");
             }
-            else
+            catch(ArgumentOutOfRangeException ex)
             {
-                Node<string>? selectedNode = null;
-                Node<string>? currentNode = head;
-                for (int i = 1; i < deletedIndex + 2; i++)
-                {
-                    currentNode = currentNode.NextNode;
-                    if(currentNode is null)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("Индекс удаляемого элемента больше длинны списка");
-                        Console.ForegroundColor = ConsoleColor.White;
-                        return;
-                    }
-                    if (i == deletedIndex - 1)
-                    {                        
-                        selectedNode = currentNode;
-                    }                        
-                    if (i == deletedIndex + 1)
-                    {
-                        selectedNode!.NextNode = currentNode;
-                        TaskHelper.PrintNode(head, "Список с удаленным элементом:");
-                        return;
-                    }
-                }
-            }            
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(ex.Message);
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+            
         }
     }
 }
