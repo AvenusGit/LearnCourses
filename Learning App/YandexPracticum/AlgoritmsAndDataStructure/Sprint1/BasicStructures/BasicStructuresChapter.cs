@@ -26,6 +26,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new CarefulMom(this),
             new RevertAll(this),
             new StackMax(this),
+            new StackMaxEffictive(this),
         };
     }
 }

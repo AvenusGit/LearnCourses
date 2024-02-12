@@ -15,8 +15,8 @@ namespace Learning_App
             Console.Clear();
             Console.WriteLine("*******************************************************************");
             Console.WriteLine($"Задача {taskNumber}: {taskName}");
-            if (String.IsNullOrEmpty(description))
-                Console.WriteLine(description);
+            if (!String.IsNullOrEmpty(description))
+                Console.WriteLine($"   {description}");
             Console.WriteLine("*******************************************************************");
         }
 
@@ -194,10 +194,10 @@ namespace Learning_App
             throw new Exception("Ошибка в алгоритме");
         }
         /// <summary>
-        /// Просит пользователя ввести числа и превращаяет их в стэк, необходимый для некоторых заданий
+        /// Просит пользователя ввести числа и превращаяет их в стэк(S), необходимый для некоторых заданий
         /// </summary>
         /// <returns></returns>
-        public static StackS<int>? GetPositiveIntegerStack()
+        public static StackS<int>? GetPositiveIntegerStackS()
         {
             Console.WriteLine("Введите положительные целые числа для значений стека через пробел...");
             string? input = Console.ReadLine();
@@ -223,6 +223,46 @@ namespace Learning_App
                 }
             }
             return new StackS<int>(stackValues.ToArray());
+        }
+        /// <summary>
+        /// Просит пользователя ввести числа и превращаяет их в стэк(M), необходимый для некоторых заданий
+        /// </summary>
+        /// <returns></returns>
+        public static StackM<int>? GetPositiveIntegerStackM()
+        {
+            Console.WriteLine("Введите положительные целые числа для значений стека через пробел...");
+            string? input = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(input))
+                return null;
+            string[] values = input.Split(' ');
+            List<int> stackValues = new List<int>();
+            foreach (string str in values)
+            {
+                int parsedInt;
+                if (Int32.TryParse(str, out parsedInt))
+                    if (parsedInt >= 0)
+                        stackValues.Add(parsedInt);
+                    else
+                    {
+                        Console.WriteLine("Числа должны быть положительными");
+                        return null;
+                    }
+                else
+                {
+                    Console.WriteLine("Не удалось определить одно из знаечний как число");
+                    return null;
+                }
+            }
+
+            int maxValue = 0;
+            List<(int, int)> stackArray = new List<(int, int)> ();
+            foreach (int val in stackValues)
+            {
+                if(val > maxValue)
+                    maxValue = val;
+                stackArray.Add((val, maxValue));
+            }
+            return new StackM<int>(stackArray.ToArray());
         }
     }
 }

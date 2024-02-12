@@ -7,16 +7,20 @@ using System.Threading.Tasks;
 
 namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicStructures.Tasks
 {
-    public class StackMax : ITask
+    internal class StackMaxEffictive : ITask
     {
-        public StackMax(IChapter chapter) { Chapter = chapter; }
+        public StackMaxEffictive(IChapter chapter)
+        {
+            Chapter = chapter;
+        }
+
         public IChapter Chapter { get; set; }
 
-        public string Number => "I";
+        public string Number => "J";
 
-        public string Name => "Стек - Макс";
+        public string Name => "Стек - Эффективный максимум";
 
-        public string Description => "Задача реализовать стек и метод в нем на вычисление максимального значения";
+        public string Description => "Найти максимум за О(1)";
 
         public void BackToMenu()
         {
@@ -29,9 +33,9 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);
 
-            StackS<int>? stack = null;
+            StackM<int>? stack = null;
             while (stack is null)
-                stack = TaskHelper.GetPositiveIntegerStackS();
+                stack = TaskHelper.GetPositiveIntegerStackM();
 
             stack.Print();
             Console.WriteLine($"Максимальное значение в стеке: {stack.GetMax()}");

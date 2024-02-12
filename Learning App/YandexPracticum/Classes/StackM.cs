@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace Learning_App.YandexPracticum.Classes
 {
-    /// <summary>
-    /// Собственная реализация стека
-    /// </summary>
-    public class StackS<T> where T :IComparable<T>
+    public class StackM<T> where T : IComparable<T>
     {
-        public StackS(int stackSize) 
+
+        public StackM(int stackSize)
         {
             Lenght = 0;
-            Values = new T[stackSize];
+            Values = new (T,T)[stackSize];
         }
 
-        public StackS(T[] array)
+        public StackM((T,T)[] array)
         {
             Lenght = array.Length;
             Values = array;
@@ -29,28 +27,28 @@ namespace Learning_App.YandexPracticum.Classes
         /// <summary>
         /// Текущие значения стека
         /// </summary>
-        T[] Values { get; set; }
+        (T, T)[] Values { get; set; }
 
         /// <summary>
         /// Добавляет элемент в стек
         /// </summary>
         public void Push(T item)
         {
-            if(Lenght >= Values.Length)
+            if (Lenght >= Values.Length)
             {
                 Console.WriteLine("Stack is full");
                 return;
             }
-            Values[++Lenght] = item;
+            Values[Lenght++] = (item, item.CompareTo(GetMax()) > 0 ? item : GetMax());
         }
         /// <summary>
         /// Команда удаляет верхний элемент из стека и возвращает его
         /// </summary>
         /// <returns>Удаленный верхний элемент из стека</returns>
-        public T? Pop()
+        public (T,T)? Pop()
         {
-            T? result = Values[Lenght];
-            Values[Lenght--] = default(T);
+            (T,T) result = Values[Lenght];
+            Values[Lenght--] = default((T,T));
             return result;
 
         }
@@ -60,13 +58,9 @@ namespace Learning_App.YandexPracticum.Classes
         /// <returns></returns>
         public T? GetMax()
         {
-            T? max = default(T);
-            foreach(T item in Values)
-            {
-                if(item.CompareTo(max) > 0)
-                    max = item;
-            }
-            return max;
+            if(Lenght > 0)
+                return Values[Lenght - 1].Item2;
+            return default(T?);
         }
         /// <summary>
         /// Печатает в консоли значения стека
@@ -74,13 +68,23 @@ namespace Learning_App.YandexPracticum.Classes
         /// <param name="printHeader"></param>
         public void Print(bool printHeader = true)
         {
-            if(printHeader)
+            if (printHeader)
                 Console.WriteLine("Значения стека:");
 
-            foreach(T item in Values)
+            foreach ((T,T) item in Values)
             {
-                Console.WriteLine($"   {item.ToString()}");
+                Console.WriteLine($"   {item.Item1.ToString()}");
             }
+        }
+        /// <summary>
+        /// Показывает верхнее значение в стеке, но не меняет его
+        /// </summary>
+        /// <returns>Верхнее знаечние стека</returns>
+        public T? Top()
+        {
+            if(Lenght > 0)
+                return Values[Lenght].Item1;
+            return default(T?);
         }
     }
 }
