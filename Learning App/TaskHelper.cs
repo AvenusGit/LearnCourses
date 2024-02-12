@@ -197,9 +197,9 @@ namespace Learning_App
         /// Просит пользователя ввести числа и превращаяет их в стэк, необходимый для некоторых заданий
         /// </summary>
         /// <returns></returns>
-        public static StackS<int>? GetIntegerStack()
+        public static StackS<int>? GetPositiveIntegerStack()
         {
-            Console.WriteLine("Введите числа для значений стека через пробел...");
+            Console.WriteLine("Введите положительные целые числа для значений стека через пробел...");
             string? input = Console.ReadLine();
             if (String.IsNullOrWhiteSpace(input))
                 return null;
@@ -209,7 +209,13 @@ namespace Learning_App
             {
                 int parsedInt;
                 if(Int32.TryParse(str, out parsedInt))
-                    stackValues.Add(parsedInt);
+                    if(parsedInt >= 0)
+                        stackValues.Add(parsedInt);
+                    else
+                    {
+                        Console.WriteLine("Числа должны быть положительными");
+                        return null;
+                    }
                 else
                 {
                     Console.WriteLine("Не удалось определить одно из знаечний как число");

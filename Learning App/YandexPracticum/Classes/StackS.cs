@@ -60,7 +60,7 @@ namespace Learning_App.YandexPracticum.Classes
         /// <returns></returns>
         public T? GetMax()
         {
-            T max = default(T);
+            T? max = default(T);
             foreach(T item in Values)
             {
                 if(item.CompareTo(max) > 0)

@@ -31,13 +31,11 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
 
             StackS<int>? stack = null;
             while (stack is null)
-                stack = TaskHelper.GetIntegerStack();
+                stack = TaskHelper.GetPositiveIntegerStack();
 
             stack.Print();
             Console.WriteLine($"Максимальное значение в стеке: {stack.GetMax()}");
             BackToMenu();
         }
-
-
     }
 }
