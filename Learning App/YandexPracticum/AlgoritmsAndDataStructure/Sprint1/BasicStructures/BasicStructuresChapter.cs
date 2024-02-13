@@ -29,6 +29,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new StackMaxEffictive(this),
             new StackSet(this),
             new Queue(this),
+            new LimitedQueue(this),
         };
     }
 }

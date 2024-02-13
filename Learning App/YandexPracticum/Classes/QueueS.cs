@@ -11,12 +11,13 @@ namespace Learning_App.YandexPracticum.Classes
     /// </summary>
     /// <typeparam name="T">Тип значений очереди</typeparam>
     public class QueueS<T> : IStackOrQueue<T> where T : IComparable<T>
-    { 
+    {
+        public QueueS() { Values = new List<T>(); }
         public QueueS(T[] array) { Values = new List<T>(array); }
         /// <summary>
         /// Массив значений очереди
         /// </summary>
-        private List<T> Values { get; set; }
+        protected List<T> Values { get; set; }
 
         public int GetSize()
         {
@@ -34,7 +35,7 @@ namespace Learning_App.YandexPracticum.Classes
             return default(T);
         }
 
-        public void Push(T item, bool print = false)
+        public virtual void Push(T item, bool print = false)
         {
             Values.Add(item);
             if (print)

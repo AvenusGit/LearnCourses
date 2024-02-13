@@ -298,7 +298,7 @@ namespace Learning_App
         }
 
         /// <summary>
-        /// Просит пользователя ввести числа и превращаяет их в стэк(H), необходимый для некоторых заданий
+        /// Просит пользователя ввести числа и превращаяет их в очередь, необходимый для некоторых заданий
         /// </summary>
         /// <returns></returns>
         public static QueueS<int>? GetPositiveIntegerQueue()
@@ -327,6 +327,52 @@ namespace Learning_App
                 }
             }
             return new QueueS<int>(stackValues);
+        }
+
+        /// <summary>
+        /// Просит пользователя ввести числа и превращаяет их в ограниченную очередь, необходимый для некоторых заданий
+        /// </summary>
+        /// <returns></returns>
+        public static QueueLimitedS<int>? GetPositiveIntegerLimitedQueue()
+        {
+            Console.WriteLine("Введите положительные целые числа для значений  ограниченной очереди через пробел...");
+            string? input = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(input))
+                return null;
+            string[] values = input.Split(' ');
+            int[] queueValues = new int[values.Length];
+            for (int i = 0; i < values.Length; i++)
+            {
+                int parsedInt;
+                if (Int32.TryParse(values[i], out parsedInt))
+                    if (parsedInt >= 0)
+                        queueValues[i] = parsedInt;
+                    else
+                    {
+                        Console.WriteLine("Числа должны быть положительными");
+                        return null;
+                    }
+                else
+                {
+                    Console.WriteLine("Не удалось определить одно из знаечний как число");
+                    return null;
+                }
+            }
+            int? limit = null;
+            while (limit is null)
+            {
+                Console.WriteLine("Введите числовой размер ограничения очереди");
+                string? answer = Console.ReadLine();
+                if(answer is not null)
+                {
+                    int value;
+                    if(Int32.TryParse(answer, out value))
+                    {
+                        limit = value;
+                    }
+                }
+            }
+            return new QueueLimitedS<int>(limit.Value, queueValues);
         }
 
         public static void BackToMenu(IChapter chapter)
