@@ -9,7 +9,7 @@ namespace Learning_App.YandexPracticum.Classes
     /// <summary>
     /// Собственная реализация стека
     /// </summary>
-    public class StackS<T> : IStack<T> where T :IComparable<T>
+    public class StackS<T> : IStackOrQueue<T> where T :IComparable<T>
     {
         public StackS(int stackSize) 
         {
@@ -38,10 +38,10 @@ namespace Learning_App.YandexPracticum.Classes
         {
             if (Lenght >= Values.Length)
             {
-                Console.WriteLine("Stack is full");
+                Console.WriteLine("Стэк уже полон!");
                 return;
             }
-            Values[++Lenght] = item;
+            Values[Lenght++] = item;
             if (print)
                 Print();
         }
@@ -51,8 +51,8 @@ namespace Learning_App.YandexPracticum.Classes
         /// <returns>Удаленный верхний элемент из стека</returns>
         public T? Pop()
         {
-            T? result = Values[Lenght];
-            Values[Lenght--] = default(T);
+            T? result = Values[Lenght - 1];
+            Values[--Lenght] = default(T);
             return result;
 
         }
@@ -73,15 +73,25 @@ namespace Learning_App.YandexPracticum.Classes
         public void Print()
         {
             Console.WriteLine("Значения стека:");
-            foreach(T item in Values)
+            for (int i = 0; i < Lenght; i++)
             {
-                Console.WriteLine($"   {item.ToString()}");
+                Console.WriteLine($"   {Values[i].ToString()}");
             }
         }
 
         public int GetSize()
         {
-            return Lenght;
+            return Lenght - 1;
+        }
+
+        public T Top()
+        {
+            return Values[Lenght - 1];
+        }
+
+        public bool IsEmpty()
+        {
+            return Lenght == 0;
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Learning_App.YandexPracticum.Classes
 {
-    public class StackH<T>: IStack<T> where T : IComparable<T>
+    public class StackH<T>: IStackOrQueue<T> where T : IComparable<T>
     {
         public StackH() { Values = new HashSet<T>(); }
         public StackH(T[] array) { Values = new HashSet<T>(array); }
@@ -43,6 +43,11 @@ namespace Learning_App.YandexPracticum.Classes
             {
                 Console.WriteLine($"   {item.ToString()}");
             }
+        }
+
+        public bool IsEmpty()
+        {
+            return !Values.Any();
         }
     }
 }

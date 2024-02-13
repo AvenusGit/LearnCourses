@@ -32,15 +32,10 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
                 stack = TaskHelper.GetPositiveIntegerStackH();
 
             stack.Print();
-            //Console.WriteLine("");
-            int? val;
-            while(true)
+            while (true)
             {
-                val = TaskHelper.GetCount("Введите число, для попытки добавления его в стек. Для выхода введите число -101");
-                if(!val.HasValue) continue;
-                if(val == -101)
-                    break;
-                stack.Push(val.Value, true);
+                string? answer = TaskHelper.InputCommand(stack);
+                if (answer is null) break;
             }
             TaskHelper.BackToMenu(Chapter);
         }

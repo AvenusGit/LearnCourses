@@ -297,11 +297,156 @@ namespace Learning_App
             return new StackH<int>(stackValues);
         }
 
+        /// <summary>
+        /// Просит пользователя ввести числа и превращаяет их в стэк(H), необходимый для некоторых заданий
+        /// </summary>
+        /// <returns></returns>
+        public static QueueS<int>? GetPositiveIntegerQueue()
+        {
+            Console.WriteLine("Введите положительные целые числа для значений очереди через пробел...");
+            string? input = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(input))
+                return null;
+            string[] values = input.Split(' ');
+            int[] stackValues = new int[values.Length];
+            for (int i = 0; i < values.Length; i++)
+            {
+                int parsedInt;
+                if (Int32.TryParse(values[i], out parsedInt))
+                    if (parsedInt >= 0)
+                        stackValues[i] = parsedInt;
+                    else
+                    {
+                        Console.WriteLine("Числа должны быть положительными");
+                        return null;
+                    }
+                else
+                {
+                    Console.WriteLine("Не удалось определить одно из знаечний как число");
+                    return null;
+                }
+            }
+            return new QueueS<int>(stackValues);
+        }
+
         public static void BackToMenu(IChapter chapter)
         {
             Console.WriteLine("Нажмите любую клавишу для выхода в меню...");
             Console.ReadKey();
             chapter.Selector();
+        }
+        /// <summary>
+        /// Просит пользователя ввести команду и выполняет ее
+        /// </summary>
+        /// <param name="element">Коллекция, для которой требуется выполнить команду</param>
+        public static string? InputCommand(IStackOrQueue<int> element)
+        {
+            Console.WriteLine("Ожидание команды:[push x, pop, top, size, print, isEmpty], для продолжения введите <continue>");
+            string? answer = Console.ReadLine();
+            if (answer == null)
+            {
+                Console.WriteLine("Пустой ввод");
+                return "";
+            }
+            switch (answer)
+            {
+                case "continue":
+                    return null;
+                case string when answer.StartsWith("push"):
+                    string[] commandParts = answer.Split(' ');
+                    if (commandParts.Count() != 2)
+                    {
+                        Console.WriteLine("Неверный синтаксис, используй <push x>");
+                        return answer;
+                    }
+                    int value;
+                    if (Int32.TryParse(commandParts[1], out value))
+                        element.Push(value, true);
+                    else
+                    {
+                        Console.WriteLine("Число в команде не распознано...");
+                        return answer;
+                    }
+                    return answer;
+                case "pop":
+                    Console.WriteLine(element.Pop());
+                    return answer;
+                case "top":
+                    Console.WriteLine(element.Top());
+                    return answer;
+                case "size":
+                    Console.WriteLine(element.GetSize());
+                    return answer;
+                case "print":
+                    element.Print();
+                    return answer;
+                case "isEmpty":
+                    Console.WriteLine(element.IsEmpty() ? "Пусто" : "Не пусто");
+                    return answer;
+                default:
+                    {
+                        Console.WriteLine("Неизвестная команда");
+                        return answer;
+                    }
+            }
+
+        }
+
+        /// <summary>
+        /// Просит пользователя ввести команду и выполняет ее
+        /// </summary>
+        /// <param name="element">Коллекция, для которой требуется выполнить команду</param>
+        public static string? InputCommandStackM(StackM<int> element)
+        {
+            Console.WriteLine("Ожидание команды:[push x, pop, top, size, print, isEmpty], для продолжения введите <continue>");
+            string? answer = Console.ReadLine();
+            if (answer == null)
+            {
+                Console.WriteLine("Пустой ввод");
+                return "";
+            }
+            switch (answer)
+            {
+                case "continue":
+                    return null;
+                case string when answer.StartsWith("push"):
+                    string[] commandParts = answer.Split(' ');
+                    if (commandParts.Count() != 2)
+                    {
+                        Console.WriteLine("Неверный синтаксис, используй <push x>");
+                        return answer;
+                    }
+                    int value;
+                    if (Int32.TryParse(commandParts[1], out value))
+                        element.Push(value, true);
+                    else
+                    {
+                        Console.WriteLine("Число в команде не распознано...");
+                        return answer;
+                    }
+                    return answer;
+                case "pop":
+                    Console.WriteLine(element.Pop());
+                    return answer;
+                case "top":
+                    Console.WriteLine(element.Top());
+                    return answer;
+                case "size":
+                    Console.WriteLine(element.GetSize());
+                    return answer;
+                case "print":
+                    element.Print();
+                    return answer;
+                case "isEmpty":
+                    Console.WriteLine(element.IsEmpty() ? "Пусто" : "Не пусто");
+                    return answer;
+                default:
+                    {
+                        Console.WriteLine("Неизвестная команда");
+                        return answer;
+                    }
+            }
+
         }
     }
 }

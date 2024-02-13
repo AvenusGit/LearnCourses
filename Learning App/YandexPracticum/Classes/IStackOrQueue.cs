@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Learning_App.YandexPracticum.Classes
 {
-    public  interface IStack<T> where T : IComparable<T>
+    public interface IStackOrQueue<T> where T : IComparable<T>
     {
         /// <summary>
-        /// Удалить элемент из стека и вернуть этот элемент
+        /// Удалить первый элемент и вернуть этот элемент
         /// </summary>
         /// <returns></returns>
-        public T Pop();
+        public T? Pop();
         /// <summary>
         /// Добавить элемент в стек
         /// </summary>
@@ -24,8 +24,18 @@ namespace Learning_App.YandexPracticum.Classes
         /// <returns></returns>
         public int GetSize();
         /// <summary>
-        /// Напечатать содержимое стека в консоли
+        /// Напечатать содержимое коллекции в консоли
         /// </summary>
         public void Print();
+        /// <summary>
+        /// Вернуть верхний элемент
+        /// </summary>
+        /// <returns></returns>
+        public T Top();
+        /// <summary>
+        /// Пуста ли очередь
+        /// </summary>
+        /// <returns></returns>
+        public bool IsEmpty();
     }
 }

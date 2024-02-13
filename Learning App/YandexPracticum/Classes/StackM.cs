@@ -36,7 +36,7 @@ namespace Learning_App.YandexPracticum.Classes
         {
             if (Lenght >= Values.Length)
             {
-                Console.WriteLine("Stack is full");
+                Console.WriteLine("Стэк полон");
                 return;
             }
             Values[Lenght++] = (item, item.CompareTo(GetMax()) > 0 ? item : GetMax());
@@ -50,8 +50,8 @@ namespace Learning_App.YandexPracticum.Classes
         /// <returns>Удаленный верхний элемент из стека</returns>
         public (T,T)? Pop()
         {
-            (T,T) result = Values[Lenght];
-            Values[Lenght--] = default((T,T));
+            (T,T) result = Values[Lenght - 1];
+            Values[--Lenght] = default((T,T));
             return result;
 
         }
@@ -74,9 +74,9 @@ namespace Learning_App.YandexPracticum.Classes
             if (printHeader)
                 Console.WriteLine("Значения стека:");
 
-            foreach ((T,T) item in Values)
+            for (int i = 0; i < Lenght; i++)
             {
-                Console.WriteLine($"   {item.Item1.ToString()}");
+                Console.WriteLine($"   {Values[i].Item1.ToString()}");
             }
         }
         /// <summary>
@@ -86,8 +86,24 @@ namespace Learning_App.YandexPracticum.Classes
         public T? Top()
         {
             if(Lenght > 0)
-                return Values[Lenght].Item1;
+                return Values[Lenght - 1].Item1;
             return default(T?);
+        }
+        /// <summary>
+        /// Размер стека
+        /// </summary>
+        /// <returns></returns>
+        public int GetSize()
+        {
+            return Lenght;
+        }
+        /// <summary>
+        /// Стек пуст
+        /// </summary>
+        /// <returns></returns>
+        public bool IsEmpty()
+        {
+            return Lenght == 0;
         }
     }
 }
