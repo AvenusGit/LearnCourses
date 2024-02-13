@@ -24,7 +24,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
 
         public void DoTask()
         {
-            TaskHelper.ShowTaskHeader(Number, Name);
+            TaskHelper.ShowTaskHeader(Number, Name, Description);
             int rowCount = TaskHelper.GetIntUserInput("Введите количество строк...");
             int colCount = TaskHelper.GetIntUserInput("Введите количество столбцов...");
             int[,] matrix = TaskHelper.InputMatrixRequest(rowCount, colCount);

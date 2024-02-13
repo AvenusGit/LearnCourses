@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="YandexPracticum\AlgoritmsAndDataStructure\Sprint1\TypicalTasks\" />
     <Folder Include="YandexPracticum\AlgoritmsAndDataStructure\Sprint1\FinalTasks\" />
   </ItemGroup>
 

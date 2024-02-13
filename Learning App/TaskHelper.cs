@@ -447,8 +447,93 @@ namespace Learning_App
                         Console.WriteLine("Неизвестная команда");
                         return answer;
                     }
+                }
             }
 
-        }
+            /// <summary>
+            /// Просит пользователя ввести команду и выполняет ее
+            /// </summary>
+            /// <param name="element">Коллекция, для которой требуется выполнить команду</param>
+            public static string? InputCommandDequeu(DequeueS<int> element)
+            {
+                Console.WriteLine("Ожидание команды:[push x, pushBack x, pop, popBack, top, topBack, size, print, isEmpty, rebuild], ");
+            Console.WriteLine("Для окончания ввода введите <continue>");
+                string ? answer = Console.ReadLine();
+                if (answer == null)
+                {
+                    Console.WriteLine("Пустой ввод");
+                    return "";
+                }
+                switch (answer)
+                {
+                    case "continue":
+                        return null;
+                    case string when answer.StartsWith("push "):
+                        string[] commandParts = answer.Split(' ');
+                        if (commandParts.Count() != 2)
+                        {
+                            Console.WriteLine("Неверный синтаксис, используй <push x>");
+                            return answer;
+                        }
+                        int value;
+                        if (Int32.TryParse(commandParts[1], out value))
+                            element.Push(value, true);
+                        else
+                        {
+                            Console.WriteLine("Число в команде не распознано...");
+                            return answer;
+                        }
+                        return answer;
+                case string when answer.StartsWith("pushBack"):
+                    commandParts = answer.Split(' ');
+                    if (commandParts.Count() != 2)
+                    {
+                        Console.WriteLine("Неверный синтаксис, используй <pushBack x>");
+                        return answer;
+                    }
+                    if (Int32.TryParse(commandParts[1], out value))
+                        element.PushBack(value, true);
+                    else
+                    {
+                        Console.WriteLine("Число в команде не распознано...");
+                        return answer;
+                    }
+                    return answer;
+                    case "pop":
+                            Console.WriteLine(element.Pop());
+                            return answer;
+                    case "popBack":
+                        Console.WriteLine(element.PopBack());
+                        return answer;
+                    case "top":
+                            Console.WriteLine(element.Top());
+                            return answer;
+                    case "topBack":
+                        Console.WriteLine(element.TopBack());
+                        return answer;
+                    case "size":
+                        Console.WriteLine(element.GetSize());
+                        return answer;
+                    case "print":
+                        element.Print();
+                        return answer;
+                    case "isEmpty":
+                        Console.WriteLine(element.IsEmpty() ? "Пусто" : "Не пусто");
+                        return answer;
+                    case "rebuild":
+                        if(!element.IsEmpty())
+                            element.Rebuild(element.GetClearArray()!);                   
+                        return answer;
+                    case "cls":
+                        Console.Clear();
+                        return answer;
+                    default:
+                        {
+                            Console.WriteLine("Неизвестная команда");
+                            return answer;
+                        }
+                }
+
+            }
     }
 }

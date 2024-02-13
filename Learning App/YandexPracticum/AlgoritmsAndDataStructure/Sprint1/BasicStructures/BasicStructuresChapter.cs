@@ -32,6 +32,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new LimitedQueue(this),
             new Encryption(this),
             new LinkedQueue(this),
+            new Dequeu(this)
         };
     }
 }
