@@ -13,6 +13,7 @@ namespace Learning_App.YandexPracticum.Classes
     /// <typeparam name="T">Тип значений связанного списка</typeparam>
     public class LinkedListS<T> where T : IComparable<T>
     {
+        public LinkedListS() { }
         public LinkedListS(Node<T> header) { Header = header; }
         /// <summary>
         /// Ссылка на первый элемент связанного списка
@@ -110,6 +111,56 @@ namespace Learning_App.YandexPracticum.Classes
                 }
             }
             throw new Exception("Ошибка алгоритма");
+        }
+        /// <summary>
+        /// Метод возвращает элемент по указанному индексу
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public T? ElementOf(int index)
+        {
+            Node<T>? current = Header;
+            for (int i = 0; i < index; i++)
+            {
+                current = current.NextNode;
+            }
+            return current is null ? default(T) : current.Value;
+        }
+        /// <summary>
+        /// Метод добавления элемента в конец связанного списка
+        /// </summary>
+        /// <param name="item">Элемент для добавления</param>
+        public void Add(T item)
+        {
+            if(Header is null)
+            {
+                Header = new Node<T>(item);
+                return;
+            }
+            Node<T>? currentNode = Header;
+            while(currentNode?.NextNode is not null)
+            {
+                currentNode = currentNode.NextNode;
+            }
+            currentNode.NextNode = new Node<T>(item);
+        }
+
+        /// <summary>
+        /// Возвращает количество элементов в связанном списке
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+                int count = 0;
+                Node<T>? current = Header;
+                while (current != null)
+                {
+                    count++;
+                    current = current.NextNode;
+                }
+                return count;
+            }
         }
     }
 }

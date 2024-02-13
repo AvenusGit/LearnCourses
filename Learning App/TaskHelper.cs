@@ -66,7 +66,7 @@ namespace Learning_App
         /// <param name="rowIndex">Номер строки</param>
         /// <param name="colCount">Количество столбцов</param>
         /// <returns>Массив строк</returns>
-        public static int[]? GetIntArray(int rowIndex, int colCount)
+        public static int[]? GetRowIntArray(int rowIndex, int colCount)
         {
             Console.WriteLine($"Введите {rowIndex + 1} строку матрицы...");
             string? input = Console.ReadLine();
@@ -108,10 +108,10 @@ namespace Learning_App
             int[,] matrix = new int[rowCount, colCount];
             for (int i = 0; i < rowCount; i++)
             {
-                int[]? rowInput = GetIntArray(i, colCount);
+                int[]? rowInput = GetRowIntArray(i, colCount);
                 while (rowInput is null)
                 {
-                    rowInput = GetIntArray(i, colCount);
+                    rowInput = GetRowIntArray(i, colCount);
                 }
                 for (int j = 0; j < rowInput.Length; j++)
                 {
@@ -145,25 +145,76 @@ namespace Learning_App
             }
         }
         /// <summary>
+        /// Запрашивает у пользователя строку и возвращает массив строк из нее разбитый по пробелам
+        /// </summary>
+        /// <returns></returns>
+        public static string[]? GetStringArray(string? description = null)
+        {
+            if(description is not null) { 
+                Console.WriteLine(description);
+            }
+            string? input = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(input))
+                return null;
+            return input.Split(' ');
+        }
+        /// <summary>
+        /// Запрашивает у пользователя строку из чисел разделенных пробелом. Если все введено верно возвращает массив чисел.
+        /// </summary>
+        /// <param name="description">Описание запроса пользователю</param>
+        /// <returns></returns>
+        public static int[]? GetIntArray(string? description = null)
+        {
+            if (description is not null)
+            {
+                Console.WriteLine(description);
+            }
+            string[]? strings = GetStringArray();
+            if (strings is not null)
+            {
+                List<int> values = new List<int>();
+                foreach (string str in strings)
+                {
+                    int parsedInt;
+                    if (Int32.TryParse(str, out parsedInt))
+                        if (parsedInt >= 0)
+                            values.Add(parsedInt);
+                        else
+                        {
+                            Console.WriteLine("Числа должны быть положительными");
+                            return null;
+                        }
+                    else
+                    {
+                        Console.WriteLine("Не удалось определить одно из значений как число");
+                        return null;
+                    }
+                }
+                return values.ToArray();
+            }
+            else return null;
+        }
+
+        /// <summary>
         /// Просит пользователя ввести строки и превращаяет их в связанный список, необходимую для некоторых заданий
         /// </summary>
         /// <returns></returns>
         public static LinkedListS<string>? GetNodeHeader()
         {
-            Console.WriteLine("Введите слова для значений нод через пробел...");
-            string? input = Console.ReadLine();
-            if (String.IsNullOrWhiteSpace(input))
-                return null;
-            string[] values = input.Split(' ');
-            Node<string>? previousNode = null;
-            for (int i = values.Length -1 ; i > -1; i--)
+            string[]? values = GetStringArray("Введите слова для значений нод через пробел...");
+            if (values is not null)
             {
-                Node<string> node = new Node<string>(values[i],previousNode);
-                previousNode = node;
-                if(i == 0)
-                    return new LinkedListS<string>(node);
+                Node<string>? previousNode = null;
+                for (int i = values.Length - 1; i > -1; i--)
+                {
+                    Node<string> node = new Node<string>(values[i], previousNode);
+                    previousNode = node;
+                    if (i == 0)
+                        return new LinkedListS<string>(node);
+                }
+                throw new Exception("Ошибка в алгоритме");
             }
-            throw new Exception("Ошибка в алгоритме");
+            else return null;
         }
 
         /// <summary>
@@ -172,26 +223,26 @@ namespace Learning_App
         /// <returns></returns>
         public static DoubleLinkedListS<string>? GetDoubleNodeHeader()
         {
-            Console.WriteLine("Введите слова для значений нод через пробел...");
-            string? input = Console.ReadLine();
-            if (String.IsNullOrWhiteSpace(input))
-                return null;
-            string[] values = input.Split(' ');
-            DoubleNode<string>? header = null;
-            DoubleNode<string>? nextNode = null;
-            DoubleNode<string>? previousNode = null;
-            for (int i = 0; i < values.Length; i++)
+            string[]? values = GetStringArray("Введите слова для значений нод через пробел...");
+            if (values is not null)
             {
-                DoubleNode<string> doubleNode = new DoubleNode<string>(values[i], nextNode, previousNode);
-                if(doubleNode.PreviousNode is not null)
-                    doubleNode.PreviousNode.NextNode = doubleNode;
-                previousNode = doubleNode;
-                if (i == 0)
-                    header = doubleNode;
-                if (i == values.Length - 1)
-                    return new DoubleLinkedListS<string>(header!);
+                DoubleNode<string>? header = null;
+                DoubleNode<string>? nextNode = null;
+                DoubleNode<string>? previousNode = null;
+                for (int i = 0; i < values.Length; i++)
+                {
+                    DoubleNode<string> doubleNode = new DoubleNode<string>(values[i], nextNode, previousNode);
+                    if (doubleNode.PreviousNode is not null)
+                        doubleNode.PreviousNode.NextNode = doubleNode;
+                    previousNode = doubleNode;
+                    if (i == 0)
+                        header = doubleNode;
+                    if (i == values.Length - 1)
+                        return new DoubleLinkedListS<string>(header!);
+                }
+                throw new Exception("Ошибка в алгоритме");
             }
-            throw new Exception("Ошибка в алгоритме");
+            else return null;            
         }
         /// <summary>
         /// Просит пользователя ввести числа и превращаяет их в стэк(S), необходимый для некоторых заданий
@@ -199,30 +250,10 @@ namespace Learning_App
         /// <returns></returns>
         public static StackS<int>? GetPositiveIntegerStackS()
         {
-            Console.WriteLine("Введите положительные целые числа для значений стека через пробел...");
-            string? input = Console.ReadLine();
-            if (String.IsNullOrWhiteSpace(input))
-                return null;
-            string[] values = input.Split(' ');
-            List<int> stackValues = new List<int>();
-            foreach (string str in values)
-            {
-                int parsedInt;
-                if(Int32.TryParse(str, out parsedInt))
-                    if(parsedInt >= 0)
-                        stackValues.Add(parsedInt);
-                    else
-                    {
-                        Console.WriteLine("Числа должны быть положительными");
-                        return null;
-                    }
-                else
-                {
-                    Console.WriteLine("Не удалось определить одно из знаечний как число");
-                    return null;
-                }
-            }
-            return new StackS<int>(stackValues.ToArray());
+            int[]? values = GetIntArray("Введите положительные целые числа для значений стека через пробел...");
+            if (values is not null)
+                return new StackS<int>(values);
+            else return null;
         }
         /// <summary>
         /// Просит пользователя ввести числа и превращаяет их в стэк(M), необходимый для некоторых заданий
@@ -230,39 +261,20 @@ namespace Learning_App
         /// <returns></returns>
         public static StackM<int>? GetPositiveIntegerStackM()
         {
-            Console.WriteLine("Введите положительные целые числа для значений стека через пробел...");
-            string? input = Console.ReadLine();
-            if (String.IsNullOrWhiteSpace(input))
-                return null;
-            string[] values = input.Split(' ');
-            List<int> stackValues = new List<int>();
-            foreach (string str in values)
+            int[]? values = GetIntArray("Введите положительные целые числа для значений стека через пробел...");
+            if(values is not null)
             {
-                int parsedInt;
-                if (Int32.TryParse(str, out parsedInt))
-                    if (parsedInt >= 0)
-                        stackValues.Add(parsedInt);
-                    else
-                    {
-                        Console.WriteLine("Числа должны быть положительными");
-                        return null;
-                    }
-                else
+                int maxValue = 0;
+                List<(int, int)> stackArray = new List<(int, int)>();
+                foreach (int val in values)
                 {
-                    Console.WriteLine("Не удалось определить одно из знаечний как число");
-                    return null;
+                    if (val > maxValue)
+                        maxValue = val;
+                    stackArray.Add((val, maxValue));
                 }
+                return new StackM<int>(stackArray.ToArray());
             }
-
-            int maxValue = 0;
-            List<(int, int)> stackArray = new List<(int, int)> ();
-            foreach (int val in stackValues)
-            {
-                if(val > maxValue)
-                    maxValue = val;
-                stackArray.Add((val, maxValue));
-            }
-            return new StackM<int>(stackArray.ToArray());
+            else return null;            
         }
 
         /// <summary>
@@ -271,30 +283,10 @@ namespace Learning_App
         /// <returns></returns>
         public static StackH<int>? GetPositiveIntegerStackH()
         {
-            Console.WriteLine("Введите положительные целые числа для значений стека через пробел...");
-            string? input = Console.ReadLine();
-            if (String.IsNullOrWhiteSpace(input))
-                return null;
-            string[] values = input.Split(' ');
-            int[] stackValues = new int[values.Length];
-            for (int i = 0; i < values.Length; i++)
-            {
-                int parsedInt;
-                if (Int32.TryParse(values[i], out parsedInt))
-                    if (parsedInt >= 0)
-                        stackValues[i] = parsedInt;
-                    else
-                    {
-                        Console.WriteLine("Числа должны быть положительными");
-                        return null;
-                    }
-                else
-                {
-                    Console.WriteLine("Не удалось определить одно из знаечний как число");
-                    return null;
-                }
-            }
-            return new StackH<int>(stackValues);
+            int[]? values = GetIntArray("Введите положительные целые числа для значений стека через пробел...");
+            if(values is not null)
+                return new StackH<int>(values);
+            else return null;
         }
 
         /// <summary>
@@ -303,30 +295,10 @@ namespace Learning_App
         /// <returns></returns>
         public static QueueS<int>? GetPositiveIntegerQueue()
         {
-            Console.WriteLine("Введите положительные целые числа для значений очереди через пробел...");
-            string? input = Console.ReadLine();
-            if (String.IsNullOrWhiteSpace(input))
-                return null;
-            string[] values = input.Split(' ');
-            int[] stackValues = new int[values.Length];
-            for (int i = 0; i < values.Length; i++)
-            {
-                int parsedInt;
-                if (Int32.TryParse(values[i], out parsedInt))
-                    if (parsedInt >= 0)
-                        stackValues[i] = parsedInt;
-                    else
-                    {
-                        Console.WriteLine("Числа должны быть положительными");
-                        return null;
-                    }
-                else
-                {
-                    Console.WriteLine("Не удалось определить одно из знаечний как число");
-                    return null;
-                }
-            }
-            return new QueueS<int>(stackValues);
+            int[]? values = GetIntArray("Введите положительные целые числа для значений очереди через пробел...");
+            if (values is not null)
+                return new QueueS<int>(values);
+            else return null;
         }
 
         /// <summary>
@@ -335,44 +307,28 @@ namespace Learning_App
         /// <returns></returns>
         public static QueueLimitedS<int>? GetPositiveIntegerLimitedQueue()
         {
-            Console.WriteLine("Введите положительные целые числа для значений  ограниченной очереди через пробел...");
-            string? input = Console.ReadLine();
-            if (String.IsNullOrWhiteSpace(input))
-                return null;
-            string[] values = input.Split(' ');
-            int[] queueValues = new int[values.Length];
-            for (int i = 0; i < values.Length; i++)
+            int[]? values = GetIntArray("Введите положительные целые числа для значений  ограниченной очереди через пробел...");
+            if (values is not null)
             {
-                int parsedInt;
-                if (Int32.TryParse(values[i], out parsedInt))
-                    if (parsedInt >= 0)
-                        queueValues[i] = parsedInt;
-                    else
-                    {
-                        Console.WriteLine("Числа должны быть положительными");
-                        return null;
-                    }
-                else
+                int? limit = null;
+                while (limit is null)
                 {
-                    Console.WriteLine("Не удалось определить одно из знаечний как число");
-                    return null;
+                    limit = GetCount("Введите числовой размер ограничения очереди");                   
                 }
+                return new QueueLimitedS<int>(limit.Value, values);
             }
-            int? limit = null;
-            while (limit is null)
-            {
-                Console.WriteLine("Введите числовой размер ограничения очереди");
-                string? answer = Console.ReadLine();
-                if(answer is not null)
-                {
-                    int value;
-                    if(Int32.TryParse(answer, out value))
-                    {
-                        limit = value;
-                    }
-                }
-            }
-            return new QueueLimitedS<int>(limit.Value, queueValues);
+            else return null;           
+        }
+        /// <summary>
+        /// Запрашивает у пользователя значения и возвращает экземпляр ссылочной очереди
+        /// </summary>
+        /// <returns></returns>
+        public static LinkedQueueS<int>? GetPositiveIntegerLinkedQueue()
+        {
+            int[]? values = GetIntArray("Введите положительные целые числа для значений списочной очереди через пробел...");
+            if (values is not null)
+                return new LinkedQueueS<int>(values);
+            else return null;
         }
 
         public static void BackToMenu(IChapter chapter)

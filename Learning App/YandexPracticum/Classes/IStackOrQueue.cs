@@ -31,7 +31,7 @@ namespace Learning_App.YandexPracticum.Classes
         /// Вернуть верхний элемент
         /// </summary>
         /// <returns></returns>
-        public T Top();
+        public T? Top();
         /// <summary>
         /// Пуста ли очередь
         /// </summary>
