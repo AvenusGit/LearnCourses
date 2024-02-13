@@ -19,6 +19,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public int Number => 1;
         public List<ITask> Tasks => new List<ITask>() {
             new FunctionValue(this),
+            new EvenOdd(this),
         };
     }
 }
