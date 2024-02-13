@@ -29,8 +29,8 @@ namespace Learning_App.YandexPracticum.Classes
         /// <summary>
         /// Переопределенный метод для добавленияв очередь. Добавлена проверка на ограничение размера очереди.
         /// </summary>
-        /// <param name="item"></param>
-        /// <param name="print"></param>
+        /// <param name="item">Добавляемый элемент</param>
+        /// <param name="print">Печатать ли содержимое после добавления</param>
         public override void Push(T item, bool print = false)
         {
             if(Values.Count >= Size)
