@@ -36,15 +36,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Typical
                     exit = true;
                     break;
                 }
-                    
-                int n = value.Value;
-                string result = String.Empty;
-                do
-                {
-                    result = n % 2 + result;
-                    n = n / 2;
-                } while (n > 0);
-                Console.WriteLine($"Число {value} в двоичной форме это {result}");
+                Console.WriteLine($"Число {value} в двоичной форме это {TaskHelper.IntToBinaryString(value.Value)}");
             }
             
             TaskHelper.BackToMenu(Chapter);

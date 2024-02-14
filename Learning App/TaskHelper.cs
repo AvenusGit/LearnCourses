@@ -607,7 +607,11 @@ namespace Learning_App
             }
             return true;
         }
-
+        /// <summary>
+        /// Принимает у пользователя строку с двоичным числом
+        /// </summary>
+        /// <param name="description">Описание запроса пользователю</param>
+        /// <returns></returns>
         public static string GetBinaryStringInput(string? description = null)
         {
             string? result = null;
@@ -626,7 +630,37 @@ namespace Learning_App
             }
             return result!;
         }
-
-
+        /// <summary>
+        /// Превращает десятичное число в строку с двоичным числом
+        /// </summary>
+        /// <param name="value">Число в 10 СС</param>
+        /// <returns></returns>
+        public static string IntToBinaryString(int value)
+        {
+            int n = value;
+            string result = String.Empty;
+            do
+            {
+                result = n % 2 + result;
+                n = n / 2;
+            } while (n > 0);
+            return result;
+        }
+        /// <summary>
+        /// Возвращает количество раз, которое символ встречается в строке
+        /// </summary>
+        /// <param name="target">Строка</param>
+        /// <param name="targetChar">Символ</param>
+        /// <returns></returns>
+        public static int GetCharCount(string target, char targetChar)
+        {
+            int result = 0;
+            foreach (char ch in target)
+            {
+                if(ch == targetChar)
+                    result++;
+            }
+            return result;
+        }
     }
 }
