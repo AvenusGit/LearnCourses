@@ -535,5 +535,22 @@ namespace Learning_App
                 }
 
             }
+
+        /// <summary>
+        /// Метод определяет, является ли слово анаграммой шаблону
+        /// </summary>
+        /// <param name="target">Целевое слово</param>
+        /// <param name="pattern">Шаблон</param>
+        /// <returns>True - если да, False, если нет</returns>
+        public static bool IsAnagramm(string target, string pattern)
+        {
+            if (target.Length != pattern.Length)
+                throw new Exception("Длины слова и паттерна не равны");
+
+            foreach (char ch in target)
+                if (!pattern.Contains(ch))
+                    return false;
+            return true;
+        }
     }
 }

@@ -68,26 +68,11 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             for (int startIndex = 0; startIndex < target.Length - pattern.Length + 1; startIndex++)
             {
                 string word = target.Substring(startIndex, pattern.Length);
-                if(IsAnagramm(word, pattern))
+                if(TaskHelper.IsAnagramm(word, pattern))
                     anagrammCount++;
             }
             Console.WriteLine($"Количество анаграмм в слове {target} - {anagrammCount}");
         }
-        /// <summary>
-        /// Метод определяет, является ли слово анаграммой шаблону
-        /// </summary>
-        /// <param name="target">Целевое слово</param>
-        /// <param name="pattern">Шаблон</param>
-        /// <returns>True - если да, False, если нет</returns>
-        private bool IsAnagramm(string target, string pattern)
-        {
-            if (target.Length != pattern.Length)
-                throw new Exception("Длины слова и паттерна не равны");
 
-            foreach (char ch in target)
-                if (!pattern.Contains(ch))
-                    return false;
-            return true;
-        }
     }
 }

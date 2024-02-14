@@ -24,6 +24,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new RemoveScores(this),
             new HomeWork(this),
             new DataBase(this),
+            new Anagramms(this),
         };
     }
 }
