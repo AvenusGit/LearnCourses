@@ -20,6 +20,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public List<ITask> Tasks => new List<ITask>() {
             new FunctionValue(this),
             new EvenOdd(this),
+            new ChaoticWeather(this),
         };
     }
 }
