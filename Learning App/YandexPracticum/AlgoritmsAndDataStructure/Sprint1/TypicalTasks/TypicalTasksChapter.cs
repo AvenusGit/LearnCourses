@@ -27,6 +27,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new Anagramms(this),
             new Palindrom(this),
             new BinarySystem(this),
+            new Dinners(this),
         };
     }
 }
