@@ -545,12 +545,88 @@ namespace Learning_App
         public static bool IsAnagramm(string target, string pattern)
         {
             if (target.Length != pattern.Length)
-                throw new Exception("Длины слова и паттерна не равны");
+            {
+                Console.WriteLine("Длины слова и паттерна не равны");
+                return false;
+            }                
 
             foreach (char ch in target)
                 if (!pattern.Contains(ch))
                     return false;
             return true;
         }
+
+        /// <summary>
+        /// Метод определяет, является ли слово палиндромом шаблону
+        /// </summary>
+        /// <param name="target">Целевое слово</param>
+        /// <param name="pattern">Шаблон</param>
+        /// <returns>True - если да, False, если нет</returns>
+        public static bool IsPalindrom (string target)
+        {
+            for (int i = 0, j = target.Length - 1; i < target.Length - 1; i++)
+            {
+                // отматываем до следующего действительного символа
+                while (!Char.IsLetterOrDigit(target[i]))
+                {
+                    if (i == target.Length - 1)
+                        return true;
+                    else i++;
+                }
+                    
+                while (!Char.IsLetterOrDigit(target[j]))
+                {
+                    if (j == 0)
+                        return true;
+                    else j--;
+                }                    
+
+                if (Char.ToLower(target[i]) == Char.ToLower(target[j]))
+                {
+                    j--;
+                    continue;
+                }
+                    
+                else return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Определяет записано ли в строке бинарное число или нет
+        /// </summary>
+        /// <param name="target">Целевая строка</param>
+        /// <returns></returns>
+        public static bool IsBinaryIntString(string? target)
+        {
+            if(String.IsNullOrWhiteSpace(target) || target.First() != '1')
+                return false;
+            foreach (char ch in target)
+            {
+                if(ch != '0' && ch != '1')
+                    return false;               
+            }
+            return true;
+        }
+
+        public static string GetBinaryStringInput(string? description = null)
+        {
+            string? result = null;
+            while (result is null)
+            {
+                if(description is not null)
+                    Console.WriteLine(description);
+                result = Console.ReadLine();
+                if (TaskHelper.IsBinaryIntString(result))
+                    break;
+                else
+                {
+                    Console.WriteLine("Это не двоичное число");
+                    result = null;
+                }
+            }
+            return result!;
+        }
+
+
     }
 }
