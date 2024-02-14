@@ -29,6 +29,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new BinarySystem(this),
             new Dinners(this),
             new OneNumbers(this),
+            new ExtraLetter(this),
         };
     }
 }
