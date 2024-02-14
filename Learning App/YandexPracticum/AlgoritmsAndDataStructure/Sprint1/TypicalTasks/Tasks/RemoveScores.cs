@@ -30,10 +30,37 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Typical
                 values = TaskHelper.GetIntArray("Введите числа очков игрока через пробел");
 
             Console.WriteLine("Итоговые значения:");
+            // если просто делать по условию то так
+            //foreach (int value in values)
+            //{
+            //    if(value != 0)
+            //        Console.WriteLine(value);
+            //}
+
+            // если под удалением считать вынос значений с 0 на край массива (левый или правый то так)
+            int arrayEndIndex = 0;
+            int currentValue = 0;
+
+            while (currentValue <= values.Length - 1)
+            {
+                if (values[currentValue] != 0)
+                {
+                    int tmp = values[currentValue];
+                    values[currentValue] = values[arrayEndIndex];
+                    values[arrayEndIndex] = tmp;
+                    arrayEndIndex++;
+                    currentValue++;
+                }
+                else
+                {
+                    currentValue++;
+                }
+            }
             foreach (int value in values)
             {
-                if(value != 0)
-                    Console.WriteLine(value);
+                if (value == 0)
+                    break;
+                Console.WriteLine($"   {value}");
             }
 
             TaskHelper.BackToMenu(Chapter);
