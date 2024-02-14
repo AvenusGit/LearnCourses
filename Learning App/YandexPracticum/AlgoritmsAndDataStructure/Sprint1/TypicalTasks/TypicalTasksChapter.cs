@@ -30,6 +30,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new Dinners(this),
             new OneNumbers(this),
             new ExtraLetter(this),
+            new Frequency(this),
         };
     }
 }
