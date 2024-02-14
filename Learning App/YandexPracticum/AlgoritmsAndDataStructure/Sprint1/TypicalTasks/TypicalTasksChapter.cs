@@ -21,6 +21,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new FunctionValue(this),
             new EvenOdd(this),
             new ChaoticWeather(this),
+            new RemoveScores(this),
+            new HomeWork(this),
         };
     }
 }
