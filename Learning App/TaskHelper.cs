@@ -208,9 +208,9 @@ namespace Learning_App
         /// Просит пользователя ввести строки и превращаяет их в связанный список, необходимую для некоторых заданий
         /// </summary>
         /// <returns></returns>
-        public static LinkedListS<string>? GetNodeHeader()
+        public static LinkedListS<string>? GetNodeHeader(string? description = null)
         {
-            string[]? values = GetStringArray("Введите слова для значений нод через пробел...");
+            string[]? values = GetStringArray(description ?? "Введите слова для значений нод через пробел...");
             if (values is not null)
             {
                 Node<string>? previousNode = null;

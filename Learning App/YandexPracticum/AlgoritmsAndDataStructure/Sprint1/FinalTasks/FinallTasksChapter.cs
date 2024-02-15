@@ -20,6 +20,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public int Number => 3;
         public List<ITask> Tasks => new List<ITask>() {
             new Calculator(this),
+            new Cycles(this),
         };
     }
 }

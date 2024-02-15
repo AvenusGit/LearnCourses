@@ -162,5 +162,22 @@ namespace Learning_App.YandexPracticum.Classes
                 return count;
             }
         }
+        /// <summary>
+        /// Проверяет наличие цикла в связанном списке
+        /// </summary>
+        /// <returns></returns>
+        public bool IsCycled()
+        {
+            if (Header is null) return false;
+
+            Node<T>? current = Header;
+            while (current.NextNode is not null)
+            {
+                current = current.NextNode;
+                if(current == Header)
+                    return true;
+            }
+            return false;
+        }
     }
 }

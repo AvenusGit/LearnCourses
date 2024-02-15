@@ -43,7 +43,11 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.FinalTa
             }
             TaskHelper.BackToMenu(Chapter);
         }
-
+        /// <summary>
+        /// Вычисляет итоговое значение польской нотации
+        /// </summary>
+        /// <param name="polishNotation">Массив значений</param>
+        /// <returns></returns>
         private int? PolishCalculator(string[] polishNotation)
         {
             try
