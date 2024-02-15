@@ -24,6 +24,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1
             new AddedChapter(this),
             new TypicalTasksChapter(this),
             new BasicStructuresChapter(this),
+            new FinallTasksChapter(this),
         };
     }
 }

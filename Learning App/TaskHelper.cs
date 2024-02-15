@@ -689,5 +689,32 @@ namespace Learning_App
             }
             return result;
         }
+        /// <summary>
+        /// Просит у пользователя строку записанную в польской нотации
+        /// </summary>
+        /// <param name="description">Как описать запрос пользователю</param>
+        /// <returns></returns>
+        public static string[]? GetPolishNotationString(string? description = null)
+        {
+            if(description is not null)
+                Console.WriteLine($"{description}");
+
+            string? input = Console.ReadLine();
+
+            if(String.IsNullOrWhiteSpace(input)) return null;
+
+            string[] values = input.Split(' ');
+            foreach (string value in values)
+            {
+                if (value == "+" || value == "-" || value == "*" || value == "/")
+                    continue;
+
+                int digit;
+                if(Int32.TryParse(value, out digit))
+                    continue;
+                return null;
+            }
+            return values;
+        }
     }
 }

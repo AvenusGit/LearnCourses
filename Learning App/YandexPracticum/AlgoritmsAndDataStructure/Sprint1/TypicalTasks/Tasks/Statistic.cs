@@ -22,7 +22,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Typical
         public string Description => "Среди троек введенных чисел, где сумма равна нулю, а произведение положительное " +
             "\r    необхожимо найти максимальное произведение";
 
-        public TaskStatus Status => TaskStatus.InProgress;
+        public TaskStatus Status => TaskStatus.Completed;
 
         public void DoTask()
         {
