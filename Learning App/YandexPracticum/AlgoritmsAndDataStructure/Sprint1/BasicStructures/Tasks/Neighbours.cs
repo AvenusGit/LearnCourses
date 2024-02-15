@@ -28,6 +28,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             "Выводом должны быть соседи этого элемента (по строке, по столбцу если есть) в порядке возрастания. " +
             "Диагональные соседи не считаются.";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);

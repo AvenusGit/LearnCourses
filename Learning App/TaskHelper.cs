@@ -604,8 +604,7 @@ namespace Learning_App
                 {
                     j--;
                     continue;
-                }
-                    
+                }                    
                 else return false;
             }
             return true;

@@ -32,6 +32,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new ExtraLetter(this),
             new Frequency(this),
             new IsDegree(this),
+            new AndVasyaAgain(this),
+            new Combination(this),
         };
     }
 }

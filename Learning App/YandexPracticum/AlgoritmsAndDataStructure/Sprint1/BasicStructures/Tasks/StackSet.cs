@@ -22,7 +22,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
 
         public string Description => "Реализовать стек, который хранит только уникальные элементы. Добавление должно быть за О(1)";
 
-
+        public TaskStatus Status => TaskStatus.Completed;
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);

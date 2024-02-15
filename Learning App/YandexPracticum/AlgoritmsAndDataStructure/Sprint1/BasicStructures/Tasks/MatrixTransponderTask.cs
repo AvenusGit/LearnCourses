@@ -22,6 +22,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
 
         public string Description => "Задача получить от пользователя матрицу и транспонировать ее (повернуть на 90 градусов)";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);

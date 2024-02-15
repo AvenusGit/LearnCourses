@@ -22,6 +22,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Typical
         public string Description => "Дан массив чисел, все числа в нем встречаются 2 раза. " +
             "\n   Найти единственный элемент, который встречается один раз.";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);

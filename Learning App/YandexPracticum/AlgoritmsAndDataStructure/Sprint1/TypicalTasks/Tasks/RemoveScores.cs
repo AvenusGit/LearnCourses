@@ -21,6 +21,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Typical
 
         public string Description => "Напечатать массив без нулей. Память больше О(1) использовать нельзя.";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);

@@ -21,6 +21,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Typical
 
         public string Description => "На вход подаются 2 числа. Необходимо определить является ли второе число одной из степеней первого";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);

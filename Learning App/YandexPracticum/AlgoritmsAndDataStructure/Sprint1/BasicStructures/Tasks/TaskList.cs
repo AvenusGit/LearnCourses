@@ -23,6 +23,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public string Description => "Описать функцию, которая пишет список дел. Узел списка описывается как нода связанного списка." +
             " Эта задача не предполагает ввода.";
 
+        public TaskStatus Status => TaskStatus.Completed;
 
         public void DoTask()
         {

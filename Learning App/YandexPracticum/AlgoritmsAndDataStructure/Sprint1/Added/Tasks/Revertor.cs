@@ -24,6 +24,8 @@ namespace Learning_App.One
         public string Description => "Задача получить от пользователя набор чисел, после чего каждую пару" +
             " из них поменять местами и вернуть получившийся массив";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         int[] TargetArray { get; set; }
 
 

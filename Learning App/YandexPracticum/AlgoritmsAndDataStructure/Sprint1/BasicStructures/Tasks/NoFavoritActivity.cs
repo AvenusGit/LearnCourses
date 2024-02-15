@@ -23,6 +23,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public string Description => "Написать метод который принимает голову односвязного списка," +
             " удалит элемент самодельного связанного списка по номеру N и снова вернет голову списка";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);

@@ -23,6 +23,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Typical
             "\n   Учитываются только буквы и цифры, заглавные и строчные считаются одинаковыми. " +
             "\n   Сложность максимум О(n), память не более O(1)";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         public void DoTask()
         {
             TaskHelper.ShowTaskHeader(Number, Name, Description);

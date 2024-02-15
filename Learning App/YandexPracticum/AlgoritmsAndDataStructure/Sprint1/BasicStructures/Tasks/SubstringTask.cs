@@ -24,6 +24,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
         public string Description => "Задача найти и вывести самую длинную (или последнюю из таких)" +
             " строку в которой символы не повторяются";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         /// <summary>
         /// Целевая строка
         /// </summary>

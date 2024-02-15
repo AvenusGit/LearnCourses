@@ -25,8 +25,12 @@ namespace Learning_App
         /// </summary>
         string Description { get; }
         /// <summary>
+        /// Указывает статус выполнения задачи
+        /// </summary>
+        TaskStatus Status { get; }
+        /// <summary>
         /// Метод начала выполнения задачи
         /// </summary>
-        public void DoTask();
+        public void DoTask();        
     }
 }

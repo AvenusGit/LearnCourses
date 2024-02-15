@@ -24,6 +24,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.Added
 
         public string Description => "Задача получить декодированную строку. Строка приходит от пользователя в формате n[abc]. n - количество повторений строки abc.";
 
+        public TaskStatus Status => TaskStatus.Completed;
+
         string Target { get; set; }
 
         public void DoTask()
