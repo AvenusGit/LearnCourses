@@ -163,7 +163,7 @@ namespace Learning_App
         /// </summary>
         /// <param name="description">Описание запроса пользователю</param>
         /// <returns></returns>
-        public static int[]? GetIntArray(string? description = null)
+        public static int[]? GetIntArray(string? description = null, bool onlyPositive = true)
         {
             if (description is not null)
             {
@@ -177,13 +177,22 @@ namespace Learning_App
                 {
                     int parsedInt;
                     if (Int32.TryParse(str, out parsedInt))
-                        if (parsedInt >= 0)
-                            values.Add(parsedInt);
+                    {
+                        if (onlyPositive)
+                        {
+                            if (parsedInt >= 0)
+                                values.Add(parsedInt);
+                            else
+                            {
+                                Console.WriteLine("Числа должны быть положительными");
+                                return null;
+                            }
+                        }
                         else
                         {
-                            Console.WriteLine("Числа должны быть положительными");
-                            return null;
-                        }
+                            values.Add(parsedInt);
+                        }                        
+                    }                        
                     else
                     {
                         Console.WriteLine("Не удалось определить одно из значений как число");

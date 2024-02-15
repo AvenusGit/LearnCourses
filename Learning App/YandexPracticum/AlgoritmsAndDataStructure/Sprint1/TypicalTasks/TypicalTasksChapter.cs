@@ -34,6 +34,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1.BasicSt
             new IsDegree(this),
             new AndVasyaAgain(this),
             new Combination(this),
+            new Statistic(this),
         };
     }
 }
