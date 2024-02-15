@@ -548,11 +548,30 @@ namespace Learning_App
             {
                 Console.WriteLine("Длины слова и паттерна не равны");
                 return false;
-            }                
+            }
+            // O(n^2)
+            //foreach (char ch in target)
+            //    if (!pattern.Contains(ch))
+            //        return false;
+            //return true;
 
+            // O(3n)
+            int[] charCount = new int[255]; // размер так то должен зависеть от кодировки
             foreach (char ch in target)
-                if (!pattern.Contains(ch))
+            {
+                charCount[ch] += 1;
+            }
+            foreach (char ch in pattern)
+            {
+                if (charCount[ch] > 0)
+                    charCount[ch] -= 1;
+                else return false;
+            }
+            foreach (int count in charCount)
+            {
+                if(count != 0)
                     return false;
+            }
             return true;
         }
 
