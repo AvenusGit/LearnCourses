@@ -765,6 +765,22 @@ namespace Learning_App
             Console.WriteLine(stringBuilder.ToString());
         }
         /// <summary>
+        /// Печатает массив диапазонов
+        /// </summary>
+        /// <param name="array">Целевой массив диапазонов</param>
+        /// <returns></returns>
+        public static void PrintItemArray(Item[] array)
+        {
+            if (array is null || array.Length == 0)
+            {
+                Console.WriteLine("Массив пуст");
+                return;
+            }
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendJoin(',', array);
+            Console.WriteLine(stringBuilder.ToString());
+        }
+        /// <summary>
         /// Запрашивает у пользователя нецелое число
         /// </summary>
         /// <param name="description">Строка описания запроса</param>
@@ -823,6 +839,31 @@ namespace Learning_App
                     return i;
             }
             return null;
+        }
+        /// <summary>
+        /// Метод запрашивает у пользователя предметы
+        /// </summary>
+        /// <param name="description">Описание запроса</param>
+        /// <returns></returns>
+        public static List<Item>? GetItems(string? description)
+        {
+            Console.WriteLine(description ?? "Введите предметы в формате <abc:1:2 xyz:3:4 def:5:6>");
+            string? value = Console.ReadLine();
+            if(String.IsNullOrWhiteSpace(value))
+            {
+                Console.WriteLine("Не удалось определить ввод"); 
+                return null;
+            }
+
+            List<Item> result = new List<Item>();
+            string[] values = value.Split(' ');
+            foreach (string val in values)
+            {
+                Item? newItem = Item.Parse(val);
+                if (newItem is not null)
+                    result.Add(newItem.Value);
+            }
+            return result;
         }
     }
 }

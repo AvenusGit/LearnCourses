@@ -20,6 +20,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2.GreedyA
             new Schedule(this),
             new StockExchange(this),
             new IsSubstring(this),
+            new BackPack(this),
         };
     }
 }
