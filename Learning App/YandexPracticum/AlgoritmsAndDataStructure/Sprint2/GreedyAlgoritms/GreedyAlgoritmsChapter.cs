@@ -18,7 +18,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2.GreedyA
         public int Number => 1;
         public List<ITask> Tasks => new List<ITask>() {
             new Schedule(this),
-            new StockExchange(this)
+            new StockExchange(this),
+            new IsSubstring(this),
         };
     }
 }

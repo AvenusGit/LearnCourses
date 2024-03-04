@@ -790,5 +790,39 @@ namespace Learning_App
                 return null;
             }
         }
+        /// <summary>
+        /// Является ли строка Х подпоследовательностью строки y
+        /// </summary>
+        /// <param name="x">Строка которую ищем</param>
+        /// <param name="y">Строка в которой ищем</param>
+        /// <returns></returns>
+        public static bool IsUnderSubstring(string x, string y)
+        {
+            // подпоследовательность - крч если символы есть в другой строке, в том же порядке, но не обязательно друг за другом
+            int? fxIndex = 0;
+            for (int i = 0; i < x.Length; i++)
+            {
+                fxIndex = FindCharInString(x[i], y, fxIndex);
+                if (fxIndex is null)
+                    return false;
+            }
+            return true;
+        }
+        /// <summary>
+        /// Под каким индексом символ находится в строке
+        /// </summary>
+        /// <param name="ch">Искомый символ</param>
+        /// <param name="target">Целевая строка</param>
+        /// <param name="startIndex">С какого индекса искать</param>
+        /// <returns>Индекс символа</returns>
+        public static int? FindCharInString(char ch, string target, int? startIndex = 0)
+        {
+            for (int i = startIndex!.Value; i < target.Length; i++) 
+            {
+                if (target[i].Equals(ch))
+                    return i;
+            }
+            return null;
+        }
     }
 }
