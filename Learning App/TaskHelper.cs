@@ -716,5 +716,18 @@ namespace Learning_App
             }
             return values;
         }
+        /// <summary>
+        /// Запрашивает у пользователя массив и возвращает стековую очередь из этого массива
+        /// </summary>
+        /// <param name="description">Описание запроса</param>
+        /// <returns></returns>
+        public static QueueStacky<int> GetQueueStacky(string? description = null)
+        {
+            int[]? values = GetIntArray(description ?? "Введите числа для значений очереди через пробел...");
+            if(values is not null)
+                return new QueueStacky<int>(values);
+            else
+                throw new Exception("Ошибка при создании очереди, массив пуст");
+        }
     }
 }
