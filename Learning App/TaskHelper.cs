@@ -865,5 +865,23 @@ namespace Learning_App
             }
             return result;
         }
+        /// <summary>
+        /// Проверяет что все строки в массие одинаковой длинны
+        /// </summary>
+        /// <param name="array">Массив строк</param>
+        /// <returns></returns>
+        public static bool CheckStringsLenght(string[]? array)
+        {
+            if(array is null || array.Length < 1)
+                return false;
+
+            int lenght = array[0].Length;
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i].Length != lenght)
+                    return false;
+            }
+            return true;
+        }
     }
 }

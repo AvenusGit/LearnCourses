@@ -22,6 +22,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2.GreedyA
             new IsSubstring(this),
             new BackPack(this),
             new Cookies(this),
+            new SortedStrings(this),
         };
     }
 }
