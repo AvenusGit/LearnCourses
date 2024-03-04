@@ -28,7 +28,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure
             {
                 return new List<ISprint>()
                 {
-                    new Sprint1.Sprint1(this)
+                    new Sprint1.Sprint1(this),
+                    new Sprint2.Sprint2(this)
                 };
             }
         }

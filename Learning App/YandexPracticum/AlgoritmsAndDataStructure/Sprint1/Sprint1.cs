@@ -21,7 +21,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint1
         public int Number => 1;
 
         public List<IChapter> Chapters => new List<IChapter>() { 
-            new AddedChapter(this),
+            //new AddedChapter(this),
             new TypicalTasksChapter(this),
             new BasicStructuresChapter(this),
             new FinallTasksChapter(this),

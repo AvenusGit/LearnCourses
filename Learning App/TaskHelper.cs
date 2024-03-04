@@ -729,5 +729,66 @@ namespace Learning_App
             else
                 throw new Exception("Ошибка при создании очереди, массив пуст");
         }
+
+        public static TimeRange[]? GetTimeRangeArray(string? description = null)
+        {
+            string[]? values = GetStringArray(description ?? "Введите диапазоны через пробел (например <abc:2:3 xyz:4.2:4.5 def:3:8>)");
+            if(values is null)
+            {
+                Console.WriteLine("Не удалось распознать строки");
+                return null;
+            }
+                
+            List<TimeRange> result = new List<TimeRange>();
+            foreach (string range in values)
+            {
+                TimeRange? newRange = TimeRange.Parse(range);
+                if (newRange is not null)
+                    result.Add(newRange.Value);
+            }
+            return result.ToArray();
+        }
+        /// <summary>
+        /// Печатает массив диапазонов
+        /// </summary>
+        /// <param name="array">Целевой массив диапазонов</param>
+        /// <returns></returns>
+        public static void PrintTimeRangeArray(TimeRange[] array)
+        {
+            if(array is null || array.Length == 0)
+            {
+                Console.WriteLine("Массив пуст");
+                return;
+            }
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendJoin(',', array);
+            Console.WriteLine(stringBuilder.ToString());
+        }
+        /// <summary>
+        /// Запрашивает у пользователя нецелое число
+        /// </summary>
+        /// <param name="description">Строка описания запроса</param>
+        /// <returns></returns>
+        public static double? GetDouble(string? description = null)
+        {
+            Console.WriteLine(description ?? "Введите не целое число ");
+            string? value = Console.ReadLine();
+            if (String.IsNullOrWhiteSpace(value))
+            {
+                Console.WriteLine("Не удалось определить число");
+                return null;
+            }
+                
+
+            double result;
+            if(Double.TryParse(value, out result)){
+                return result;
+            }
+            else
+            {
+                Console.WriteLine("Не удалось определить число");
+                return null;
+            }
+        }
     }
 }
