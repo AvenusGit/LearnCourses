@@ -28,6 +28,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2.GreedyA
             new SameAmounts(this),
             new LastWord(this),
             new Mortgage(this),
+            new Ladder(this),
         };
     }
 }
