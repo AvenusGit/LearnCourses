@@ -24,6 +24,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2.GreedyA
             new Cookies(this),
             new SortedStrings(this),
             new Spiral(this),
+            new AscendingSubArray(this),
         };
     }
 }
