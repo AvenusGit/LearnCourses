@@ -21,6 +21,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2.Recursi
             new RecursiveFibonachiNumbers(this),
             new RecursiveFibonachiNumbersMemory(this),
             new RecursiveFibonachiNumbersMemoryEffective(this),
+            new LastInteger(this),
         };
     }
 }
