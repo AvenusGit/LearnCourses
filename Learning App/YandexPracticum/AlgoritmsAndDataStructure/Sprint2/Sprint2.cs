@@ -1,4 +1,5 @@
 ﻿using Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2.GreedyAlgoritms;
+using Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2.Recursion;
 
 namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2
 {
@@ -13,6 +14,7 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2
 
         public List<IChapter> Chapters => new List<IChapter>() { 
             new GreedyAlgoritmsChapter(this),
+            new RecursionChapter(this),
         };
     }
 }
