@@ -23,6 +23,8 @@ namespace Learning_App.YandexPracticum.AlgoritmsAndDataStructure.Sprint2.Recursi
             new RecursiveFibonachiNumbersMemoryEffective(this),
             new LastInteger(this),
             new KondratysEncryptionSystem(this),
+            new CycledFactorial(this),
+            new UnderAlphabet(this),
         };
     }
 }
